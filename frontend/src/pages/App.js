@@ -4,6 +4,7 @@ import Homepage from "./Homepage";
 import AuthPage from "./AuthPage";
 import SignupPage from "./SignupPage";
 import LogDetail from "./LogDetail";
+import CreatePet from "./CreatePet";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route exact path="/login" element={<AuthPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
       <Route path="/detail/:id" element={<LogDetail />}></Route>
+      <Route path="/create" element={<CreatePet />}></Route>
     </Routes>
   );
 }

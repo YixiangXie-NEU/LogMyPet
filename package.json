@@ -11,7 +11,9 @@
     "init:db": "mongoimport -d logMyPetDB -c pets --jsonArray --file ./data/pets.json",
     "install:all": "yarn && cd frontend && yarn",
     "build": "cd frontend && yarn clean && yarn build",
-    "start": "yarn build && nodemon app.js"
+    "start": "yarn build && nodemon app.js",
+    "dev:server": "nodemon app.js",
+    "dev:client": "cd frontend && yarn dev"
   },
   "devDependencies": {
     "eslint": "^8.27.0",

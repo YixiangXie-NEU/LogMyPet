@@ -1,0 +1,33 @@
+.create-pet {
+  width: 360px;
+  text-align: center;
+}
+
+.create-pet-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+  margin-bottom: 26px;
+}
+
+.create-pet-input {
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+.button-section {
+  margin-top: 40px;
+}
+
+.button-section > * + * {
+  margin-top: 16px;
+}
+
+.create-pet-cancel-button {
+  padding: 7px;
+  border: 1px solid #D9D9D9;
+}
+
+.create-pet-create-button {
+  color: white
+}
