@@ -5,11 +5,7 @@
       "destination": "/api"
     },
     {
-      "source": "/detail/:id",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/login",
+      "source": "*",
       "destination": "/index.html"
     }
   ]
