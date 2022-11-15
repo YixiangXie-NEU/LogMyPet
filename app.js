@@ -18,8 +18,10 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, "frontend/build")));
-
 app.use("/", indexRouter);
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend/build/index.html"));
+});
 
 app.listen(PORT, function () {
   console.log(`Listening on ${PORT}`);
