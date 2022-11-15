@@ -7,6 +7,10 @@
     {
       "source": "/detail/:id",
       "destination": "/frontend/build/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/frontend/build/index.html"
     }
   ]
 }
