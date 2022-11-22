@@ -8,14 +8,8 @@ router.get("/api/helloworld", (req, res) => {
   res.json("hello world");
 });
 
-router.get("/api/pets", async (req, res) => {
-  const page = req.body.page;
-  const pets = await db.getPets(page);
-
-  console.log("pets", pets);
-  res.json(pets);
-});
-
+router.get("/api/pets", db.getPets);
+router.post("/api/pet", db.createPet);
 router.get("/api/getCurrUser", db.userAuthStatus);
 router.post("/api/signup", db.createUser);
 router.post("/api/login", db.authenticate);

@@ -47,20 +47,43 @@ passport.deserializeUser(function (user, cb) {
   });
 });
 
-const getPets = async function (page = 0) {
+const getPets = async (req, res) => {
   let client;
 
   try {
     client = new MongoClient(mongoURL);
     const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
-
-    return await petsCol
+    const page = req.body.page || 0;
+    const result = await petsCol
       .find({})
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
       .toArray();
+    console.log(`Page ${page} of pets are retrieved. Example record[0]: ${result[0]}`);
+    res.json(result);
+  } catch (err) {
+    console.log(`Error occurred while getting pets: ${err.message}`);
+    res.sendStatus(500);
   } finally {
     console.log("getPets: Closing db connection");
+    client.close();
+  }
+};
+
+const createPet = async (req, res) => {
+  let client;
+
+  try {
+    client = new MongoClient(mongoURL);
+    const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
+    const result = await petsCol.insertOne(req.body);
+    console.log(`A new pet was inserted with the _id: ${result.insertedId}`);
+    res.json(result);
+  } catch (err) {
+    console.log(`Error occurred while creating pet: ${err.message}`);
+    res.sendStatus(500);
+  } finally {
+    console.log("createPet: Closing db connection");
     client.close();
   }
 };
@@ -115,6 +138,7 @@ const createUser = async (req, res) => {
 
 export default {
   getPets,
+  createPet,
   userAuthStatus,
   createUser,
   authenticate,
