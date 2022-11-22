@@ -23,8 +23,8 @@ const CreatePet = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("/api/pets", {
-      method: "GET",
+    fetch("/api/pet", {
+      method: "POST",
       body: JSON.stringify({
         userId: "00000000001",
         name: name,
