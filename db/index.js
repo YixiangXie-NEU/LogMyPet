@@ -5,9 +5,8 @@ import LocalStrategy from "passport-local";
 
 const mongoURL = config.MONGO_URL || "mongodb://localhost:27017";
 const DB_NAME = "logMyPetDB";
-const USER_DB_NAME = "users";
 const PET_COLLECTION_NAME = "pets";
-const USER_COLLECTION_NAME = "usersLists";
+const USER_COLLECTION_NAME = "users";
 const PAGE_SIZE = 20;
 
 const strategy = new LocalStrategy(async function verify(
@@ -18,7 +17,7 @@ const strategy = new LocalStrategy(async function verify(
   let client = new MongoClient(mongoURL);
 
   const result = await client
-    .db(USER_DB_NAME)
+    .db(DB_NAME)
     .collection(USER_COLLECTION_NAME)
     .find({ username: username })
     .toArray();
@@ -117,7 +116,7 @@ const createUser = async (req, res) => {
     client = new MongoClient(mongoURL);
 
     const result = await client
-      .db(USER_DB_NAME)
+      .db(DB_NAME)
       .collection(USER_COLLECTION_NAME)
       .find({ username: req.body.username })
       .toArray();
@@ -125,7 +124,7 @@ const createUser = async (req, res) => {
     if (result.length > 0) res.sendStatus(403);
     else {
       await client
-        .db(USER_DB_NAME)
+        .db(DB_NAME)
         .collection(USER_COLLECTION_NAME)
         .insertOne(req.body);
       console.log(`A new user was inserted with the _id: ${res.json(result)}`);
