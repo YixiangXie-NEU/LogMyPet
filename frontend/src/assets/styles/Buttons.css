@@ -7,6 +7,10 @@
   line-height: 22px;
 }
 
+.small-button svg {
+  margin-left: -4px;
+}
+
 .medium-button {
   padding: 8px;
   border: none;

@@ -4,7 +4,6 @@ import Carousel from "../Carousel";
 import PetSectionProfileItem from "./PetSectionProfileItem";
 
 import "../../assets/styles/Colors.css";
-import "../../assets/styles/PetSectionProfile.css";
 
 const PetSectionProfile = () => {
   const [pets, setPets] = useState([]);
