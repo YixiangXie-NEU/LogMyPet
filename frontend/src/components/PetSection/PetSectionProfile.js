@@ -1,62 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import PetProfile from "./PetProfile";
+import Carousel from "../Carousel";
+import PetSectionProfileItem from "./PetSectionProfileItem";
 
 import "../../assets/styles/Colors.css";
 import "../../assets/styles/PetSectionProfile.css";
 
-function PetSectionProfile() {
+const PetSectionProfile = () => {
+  const [pets, setPets] = useState([]);
+
+  const loadData = async () => {
+    const res = await fetch("/api/pets", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      setPets(data);
+    } else {
+      console.log("Failed to load pets.");
+    }
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
-    <div
-      id="carouselExampleDark"
-      className="carousel carousel-dark slide col-12 col-xl-6 pet-section-profile"
-      data-bs-ride="true"
-    >
-      <div className="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide-to="0"
-          className="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-      </div>
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          {/* profile starts here */}
-          <div className="d-flex justify-content-center background-purple-light pet-section-content">
-            <div className="d-flex flex-column">
-              <span className="pet-section-title">Lilca profile</span>
-              <span className="pet-section-description">
-                He arrived home on November 1st, 2021
-              </span>
-              <PetProfile />
-            </div>
-          </div>
-          {/* profile ends here */}
-        </div>
-      </div>
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleDark"
-        data-bs-slide="prev"
-      >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleDark"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
-      </button>
-    </div>
+    <Carousel
+      items={pets.map((pet, index) => (
+        <PetSectionProfileItem
+          name={pet.name}
+          gender={pet.gender}
+          birthday={pet.birthday}
+          weight={pet.weight}
+          neuteredOrSpayed={pet.neuteredOrSpayed}
+          key={index}
+        />
+      ))}
+    />
   );
-}
+};
 
 export default PetSectionProfile;

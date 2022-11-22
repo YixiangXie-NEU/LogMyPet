@@ -14,16 +14,21 @@ const CreatePet = () => {
   const [species, setSpecies] = useState("");
   const [breed, setBreed] = useState("");
   const [color, setColor] = useState("");
+  const [weight, setWeight] = useState("");
   const [gender, setGender] = useState("");
-  const [neutered, setNeutered] = useState("");
+  const [neuteredOrSpayed, setNeuteredOrSpayed] = useState("");
   const [birthday, setBirthday] = useState("");
   const [personality, setPersonality] = useState("");
   const [alert, setAlert] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleCancel = () => {
+    navigate("/");
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch("/api/pet", {
+    const res = await fetch("/api/pet", {
       method: "POST",
       body: JSON.stringify({
         userId: "00000000001",
@@ -31,21 +36,22 @@ const CreatePet = () => {
         species: species,
         breed: breed,
         color: color,
+        weight: weight,
         gender: gender,
-        neutered: neutered,
+        neuteredOrSpayed: neuteredOrSpayed === "Yes" ? true : false,
         birthday: birthday,
         personality: personality,
       }),
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      if (res.ok) {
-        navigate("/");
-      } else {
-        setAlert("Failed to create new pet.");
-      }
     });
+
+    if (res.ok) {
+      navigate("/");
+    } else {
+      setAlert("Failed to create new pet.");
+    }
   };
 
   return (
@@ -101,17 +107,27 @@ const CreatePet = () => {
               setColor(event.target.value);
             }}
           ></input>
+          <input
+            type="text"
+            className="form-control create-pet-text-input"
+            placeholder="Weight"
+            aria-label="Weight"
+            value={weight}
+            onChange={(event) => {
+              setWeight(event.target.value);
+            }}
+          ></input>
           <RadioGroup
             title="Gender"
             options={["Male", "Female"]}
             value={gender}
-            onChange={setGender}
+            setValue={setGender}
           />
           <RadioGroup
             title="Spayed/Neutered"
             options={["Yes", "No"]}
-            value={neutered}
-            onChange={setNeutered}
+            value={neuteredOrSpayed}
+            setValue={setNeuteredOrSpayed}
           />
           <input
             type="text"
@@ -136,6 +152,7 @@ const CreatePet = () => {
             <button
               type="button"
               className="medium-button create-pet-cancel-button"
+              onClick={handleCancel}
             >
               Cancel
             </button>
