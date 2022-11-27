@@ -1,0 +1,15 @@
+.pet-section-item-loading-1 {
+  margin-top: 20px;
+}
+
+.pet-section-item-loading-2 {
+  margin-top: 8px;
+}
+
+.pet-section-item-loading-3 {
+  margin-left: 8px;
+}
+
+.pet-section-item-loading-3 > *:first-child {
+  margin-bottom: 16px;
+}

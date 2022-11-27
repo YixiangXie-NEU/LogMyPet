@@ -4,7 +4,7 @@ import React from "react";
 import "../assets/styles/Colors.css";
 import "../assets/styles/Carousel.css";
 
-const Carousel = ({ items }) => (
+const Carousel = ({ items, Loading }) => (
   <div
     id="carouselExampleDark"
     className="carousel carousel-dark slide col-12 col-xxl-6 conditional-margin"
@@ -24,14 +24,20 @@ const Carousel = ({ items }) => (
       ))}
     </div>
     <div className="carousel-inner">
-      {items.map((item, index) => (
-        <div
-          className={`carousel-item${index === 0 ? " active" : ""}`}
-          key={index}
-        >
-          {item}
-        </div>
-      ))}
+      {items.length === 0 ? (
+        <Loading />
+      ) : (
+        <React.Fragment>
+          {items.map((item, index) => (
+            <div
+              className={`carousel-item${index === 0 ? " active" : ""}`}
+              key={index}
+            >
+              {item}
+            </div>
+          ))}
+        </React.Fragment>
+      )}
     </div>
     <button
       className="carousel-control-prev"
@@ -56,6 +62,7 @@ const Carousel = ({ items }) => (
 
 Carousel.propTypes = {
   items: PropTypes.arrayOf(PropTypes.node).isRequired,
+  Loading: PropTypes.node.isRequired,
 };
 
 export default Carousel;

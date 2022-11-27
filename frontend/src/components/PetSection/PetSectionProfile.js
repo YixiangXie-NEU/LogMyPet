@@ -3,6 +3,7 @@ import React from "react";
 
 import Carousel from "../Carousel";
 import PetSectionProfileItem from "./PetSectionProfileItem";
+import PetSectionProfileItemLoading from "./PetSectionProfileItemLoading";
 
 import "../../assets/styles/Colors.css";
 
@@ -11,6 +12,7 @@ const PetSectionProfile = ({ pets }) => (
     items={pets.map((pet, index) => (
       <PetSectionProfileItem pet={pet} key={index} />
     ))}
+    Loading={PetSectionProfileItemLoading}
   />
 );
 
