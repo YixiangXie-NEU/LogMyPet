@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import App from "./pages/App.js";
 import { BrowserRouter } from "react-router-dom";
 
+import App from "./pages/App.js";
 import ModalProvider from "./context/modal-context";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import "react-loading-skeleton/dist/skeleton.css";
 import "./assets/fonts/Poppins/Poppins-Thin.ttf";
 import "./assets/fonts/Poppins/Poppins-ExtraLight.ttf";
 import "./assets/fonts/Poppins/Poppins-Light.ttf";

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import { useNavigate, useParams } from "react-router-dom";
 
 import PetInfoDisplay from "../components/PetInfoDisplay";
@@ -12,9 +13,10 @@ const PetDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [pet, setPet] = useState("");
+  const [pet, setPet] = useState({});
   const [editMode, setEditMode] = useState(false);
   const [alert, setAlert] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handleCancel = () => {
     navigate("/");
@@ -68,6 +70,7 @@ const PetDetail = () => {
         "Content-Type": "application/json",
       },
     });
+    setLoading(false);
     if (res.ok) {
       const data = await res.json();
       setPet(data[0]);
@@ -83,7 +86,9 @@ const PetDetail = () => {
   return (
     <div className="d-flex justify-content-center container-fluid vh-100 background-gray-light pet-detail">
       <div className="d-flex flex-column pet-detail-field">
-        <h1 className="pet-detail-title">{pet.name}’s detail</h1>
+        <h1 className="pet-detail-title">
+          {loading ? <Skeleton /> : `${pet.name}’s detail`}
+        </h1>
         {alert && (
           <div
             className="alert alert-danger d-flex align-items-center"
@@ -92,17 +97,7 @@ const PetDetail = () => {
             <div>{alert}</div>
           </div>
         )}
-        {!editMode && (
-          <PetInfoDisplay
-            pet={pet}
-            handleCancel={handleCancel}
-            handleDelete={handleDelete}
-            handleEdit={() => {
-              setEditMode(true);
-            }}
-          />
-        )}
-        {editMode && (
+        {editMode ? (
           <PetInfoForm
             initPet={pet}
             handleSubmit={handleSubmit}
@@ -110,6 +105,15 @@ const PetDetail = () => {
               setEditMode(false);
             }}
             submitButtonText="Edit"
+          />
+        ) : (
+          <PetInfoDisplay
+            pet={pet}
+            handleCancel={handleCancel}
+            handleDelete={handleDelete}
+            handleEdit={() => {
+              setEditMode(true);
+            }}
           />
         )}
       </div>
