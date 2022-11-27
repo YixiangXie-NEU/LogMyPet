@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import "../assets/styles/Buttons.css";
-import "../assets/styles/Colors.css";
-import "../assets/styles/RadioGroup.css";
+import "../../assets/styles/Buttons.css";
+import "../../assets/styles/Colors.css";
+import "../../assets/styles/RadioGroup.css";
 
 const RadioGroup = ({ title, options, value, setValue }) => (
   <div className="radio-group">

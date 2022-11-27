@@ -7,7 +7,7 @@ import "../assets/styles/Carousel.css";
 const Carousel = ({ items }) => (
   <div
     id="carouselExampleDark"
-    className="carousel carousel-dark slide col-12 col-xl-6 conditional-margin"
+    className="carousel carousel-dark slide col-12 col-xxl-6 conditional-margin"
     data-bs-ride="true"
   >
     <div className="carousel-indicators">

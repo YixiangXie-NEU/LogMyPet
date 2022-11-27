@@ -1,0 +1,16 @@
+.pet-info-form-button-section {
+  margin: 40px 0 100px 0;
+}
+
+.pet-info-form-button-section > * + * {
+  margin-top: 16px;
+}
+
+.pet-info-form-cancel-button {
+  padding: 7px;
+  border: 1px solid #d9d9d9;
+}
+
+.pet-info-form-submit-button {
+  color: white;
+}

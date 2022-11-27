@@ -30,14 +30,7 @@ const PetSectionProfile = () => {
   return (
     <Carousel
       items={pets.map((pet, index) => (
-        <PetSectionProfileItem
-          name={pet.name}
-          gender={pet.gender}
-          birthday={pet.birthday}
-          weight={pet.weight}
-          neuteredOrSpayed={pet.neuteredOrSpayed}
-          key={index}
-        />
+        <PetSectionProfileItem pet={pet} key={index} />
       ))}
     />
   );

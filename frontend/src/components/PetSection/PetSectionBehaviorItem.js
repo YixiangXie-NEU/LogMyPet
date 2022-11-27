@@ -7,7 +7,7 @@ import "../../assets/styles/PetSectionBehaviorItem.css";
 
 function PetSectionBehaviorItem() {
   return (
-    <button className="col-12 col-xl-11 d-inline-flex align-items-center large-button background-purple-light">
+    <button className="col-12 col-xxl-11 d-inline-flex align-items-center large-button background-purple-light">
       <div className="pet-section-behavior-item-pic purple-solid"></div>
       <div className="d-flex flex-column align-items-start">
         <span className="pet-section-behavior-item-title">Brush teeth</span>

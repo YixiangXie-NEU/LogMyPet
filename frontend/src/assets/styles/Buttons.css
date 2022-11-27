@@ -32,3 +32,8 @@
 .large-button + .large-button {
   margin-top: 8px;
 }
+
+.clear-styles {
+  border: none;
+  background-color: transparent;
+}

@@ -4,7 +4,7 @@ import PetSectionBehaviorItem from "./PetSectionBehaviorItem";
 
 function PetSectionBehavior() {
   return (
-    <div className="col-12 col-xl-6 d-flex flex-column align-items-end">
+    <div className="col-12 col-xxl-6 d-flex flex-column align-items-end">
       <PetSectionBehaviorItem />
       <PetSectionBehaviorItem />
       <PetSectionBehaviorItem />

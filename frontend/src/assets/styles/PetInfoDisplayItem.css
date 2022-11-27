@@ -1,0 +1,8 @@
+.pet-info-display-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.pet-info-display-item-label {
+  min-width: 160px;
+  font-weight: 500;
+}

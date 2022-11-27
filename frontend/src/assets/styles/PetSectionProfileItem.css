@@ -8,6 +8,11 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 38px;
+  width: 100%;
+}
+
+.pet-section-item-button {
+  margin-left: auto;
 }
 
 .pet-section-item-description {
@@ -17,7 +22,7 @@
   margin-bottom: 4px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .pet-section-item-content {
     padding: 32px 120px;
   }

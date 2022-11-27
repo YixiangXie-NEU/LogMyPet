@@ -1,0 +1,16 @@
+.pet-detail {
+  overflow-y: scroll;
+  padding-top: 136px;
+}
+
+.pet-detail-field {
+  width: 360px;
+}
+
+.pet-detail-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+  margin-bottom: 26px;
+  text-align: center;
+}

@@ -19,7 +19,6 @@ function Homepage() {
           <LeftPanel />
           <RightPanel />
         </div>
-        {/* <div className="log-detail-flow"></div> */}
       </div>
     </div>
   );

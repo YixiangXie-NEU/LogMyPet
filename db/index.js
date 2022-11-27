@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import config from "../config.js";
 import passport from "passport";
 import LocalStrategy from "passport-local";
@@ -58,13 +58,37 @@ const getPets = async (req, res) => {
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
       .toArray();
-    console.log(`Page ${page} of pets are retrieved. Example record[0]: ${result[0]}`);
+    console.log(
+      `Page ${page} of pets are retrieved. Example record[0]: ${result[0]}`
+    );
     res.json(result);
   } catch (err) {
     console.log(`Error occurred while getting pets: ${err.message}`);
     res.sendStatus(500);
   } finally {
     console.log("getPets: Closing db connection");
+    client.close();
+  }
+};
+
+const getOnePet = async (req, res) => {
+  let client;
+
+  try {
+    client = new MongoClient(mongoURL);
+    const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
+    const result = await petsCol
+      .find({ _id: ObjectId(req.params.id) })
+      .toArray();
+    console.log(`Pet ${req.params.id} is retrieved.`);
+    res.json(result);
+  } catch (err) {
+    console.log(
+      `Error occurred while getting pet ${req.params.id}: ${err.message}`
+    );
+    res.sendStatus(500);
+  } finally {
+    console.log("getOnePet: Closing db connection");
     client.close();
   }
 };
@@ -83,6 +107,51 @@ const createPet = async (req, res) => {
     res.sendStatus(500);
   } finally {
     console.log("createPet: Closing db connection");
+    client.close();
+  }
+};
+
+const editPet = async (req, res) => {
+  let client;
+
+  try {
+    client = new MongoClient(mongoURL);
+    const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
+    await petsCol.updateOne(
+      { _id: ObjectId(req.params.id) },
+      {
+        $set: req.body,
+      }
+    );
+    console.log(`Pet ${req.params.id} is updated.`);
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(
+      `Error occurred while getting pet ${req.params.id}: ${err.message}`
+    );
+    res.sendStatus(500);
+  } finally {
+    console.log("editPet: Closing db connection");
+    client.close();
+  }
+};
+
+const deletePet = async (req, res) => {
+  let client;
+
+  try {
+    client = new MongoClient(mongoURL);
+    const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
+    await petsCol.deleteOne({ _id: ObjectId(req.params.id) });
+    console.log(`Pet ${req.params.id} is deleted.`);
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(
+      `Error occurred while deleting pet ${req.params.id}: ${err.message}`
+    );
+    res.sendStatus(500);
+  } finally {
+    console.log("deletePet: Closing db connection");
     client.close();
   }
 };
@@ -137,7 +206,10 @@ const createUser = async (req, res) => {
 
 export default {
   getPets,
+  getOnePet,
   createPet,
+  editPet,
+  deletePet,
   userAuthStatus,
   createUser,
   authenticate,

@@ -1,0 +1,36 @@
+.pet-info-display {
+  overflow-y: scroll;
+  padding-top: 136px;
+}
+
+.pet-info-display-field {
+  width: 360px;
+}
+
+.pet-info-display-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.pet-info-display-button-section {
+  margin: 40px 0 100px 0;
+}
+
+.pet-info-display-button-section-sub,
+.pet-info-display-button-section-sub > * {
+  width: 100%;
+  color: white;
+}
+
+.pet-info-display-back-button {
+  padding: 7px;
+  border: 1px solid #d9d9d9;
+  margin-bottom: 16px;
+}
+
+.pet-info-display-edit-button {
+  margin-left: 16px;
+}
