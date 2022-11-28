@@ -118,7 +118,7 @@ const AuthForm = ({ content }) => {
               ref={nameInputRef}
             ></input>
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="Password"
               aria-label="Password"
