@@ -12,7 +12,7 @@ const SignupPage = () => {
             title: "Create an account",
             description: "Let’s get started",
             extra: "",
-            btn: "Sign up"
+            btn: "Sign up",
           }}
         />
         <AuthRight />
@@ -20,5 +20,7 @@ const SignupPage = () => {
     </div>
   );
 };
+
+SignupPage.propTypes = {};
 
 export default SignupPage;

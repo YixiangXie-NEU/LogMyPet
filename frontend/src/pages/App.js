@@ -8,7 +8,7 @@ import CreatePet from "./CreatePet";
 import PetDetail from "./PetDetail";
 import CreateRecord from "./CreateRecord";
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Homepage />}></Route>
@@ -18,9 +18,10 @@ function App() {
       <Route path="/create" element={<CreatePet />}></Route>
       <Route path="/createRecord" element={<CreateRecord />}></Route>
       <Route path="/detail/:id" element={<PetDetail />}></Route>
-      {/* <Route path="/edit/:id" element={<CreatePet />}></Route> */}
     </Routes>
   );
-}
+};
+
+App.propTypes = {};
 
 export default App;

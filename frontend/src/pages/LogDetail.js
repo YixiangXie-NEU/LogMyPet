@@ -36,4 +36,6 @@ const LogDetail = () => (
   </div>
 );
 
+LogDetail.propTypes = {};
+
 export default LogDetail;

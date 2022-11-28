@@ -64,4 +64,6 @@ const CreatePet = () => {
   );
 };
 
+CreatePet.propTypes = {};
+
 export default CreatePet;

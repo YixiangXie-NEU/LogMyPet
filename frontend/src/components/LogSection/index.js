@@ -10,7 +10,7 @@ import LogSectionItem from "./LogSectionItem";
 import "../../assets/styles/Buttons.css";
 import "../../assets/styles/LogSection.css";
 
-function LogSection() {
+const LogSection = () => {
   const toggleModal = useContext(ModalContext).toggleModal;
 
   const modalHandler = () => {
@@ -40,6 +40,8 @@ function LogSection() {
       </div>
     </div>
   );
-}
+};
+
+LogSection.propTypes = {};
 
 export default LogSection;

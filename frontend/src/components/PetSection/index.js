@@ -37,4 +37,6 @@ const PetSection = () => {
   );
 };
 
+PetSection.propTypes = {};
+
 export default PetSection;

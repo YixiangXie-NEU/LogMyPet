@@ -2,7 +2,7 @@ import React from "react";
 
 import PetSectionBehaviorItem from "./PetSectionBehaviorItem";
 
-function PetSectionBehavior() {
+const PetSectionBehavior = () => {
   return (
     <div className="col-12 col-xxl-6 d-flex flex-column align-items-end">
       <PetSectionBehaviorItem />
@@ -10,6 +10,8 @@ function PetSectionBehavior() {
       <PetSectionBehaviorItem />
     </div>
   );
-}
+};
+
+PetSectionBehavior.propTypes = {};
 
 export default PetSectionBehavior;

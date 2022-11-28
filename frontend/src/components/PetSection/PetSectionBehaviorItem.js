@@ -5,7 +5,7 @@ import "../../assets/styles/Buttons.css";
 import "../../assets/styles/Colors.css";
 import "../../assets/styles/PetSectionBehaviorItem.css";
 
-function PetSectionBehaviorItem() {
+const PetSectionBehaviorItem = () => {
   return (
     <button className="col-12 col-xxl-11 d-inline-flex align-items-center large-button background-purple-light">
       <div className="pet-section-behavior-item-pic purple-solid"></div>
@@ -16,6 +16,8 @@ function PetSectionBehaviorItem() {
       <UilAngleRight className="right-icon" size="20" />
     </button>
   );
-}
+};
+
+PetSectionBehaviorItem.propTypes = {};
 
 export default PetSectionBehaviorItem;

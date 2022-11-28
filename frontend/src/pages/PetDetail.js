@@ -121,4 +121,6 @@ const PetDetail = () => {
   );
 };
 
+PetDetail.propTypes = {};
+
 export default PetDetail;

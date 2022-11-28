@@ -3,11 +3,6 @@ import db from "../db/index.js";
 
 const router = express.Router();
 
-router.get("/api/helloworld", (req, res) => {
-  console.log("hello world");
-  res.json("hello world");
-});
-
 router.get("/api/pets", db.getPets);
 router.get("/api/pet/:id", db.getOnePet);
 router.post("/api/pet", db.createPet);

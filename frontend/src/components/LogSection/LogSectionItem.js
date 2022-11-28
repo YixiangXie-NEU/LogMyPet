@@ -5,7 +5,7 @@ import "../../assets/styles/Colors.css";
 import "../../assets/styles/Tags.css";
 import "../../assets/styles/LogSectionItem.css";
 
-function LogSectionItem() {
+const LogSectionItem = () => {
   return (
     <div className="d-flex align-items-center background-purple-light login-section-item">
       <div className="col-3 d-flex align-items-center">
@@ -23,6 +23,8 @@ function LogSectionItem() {
       </a>
     </div>
   );
-}
+};
+
+LogSectionItem.propTypes = {};
 
 export default LogSectionItem;

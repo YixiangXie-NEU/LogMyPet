@@ -2,7 +2,7 @@ import React from "react";
 
 import "../../assets/styles/LogSectionTitle.css";
 
-function LogSectionTitle() {
+const LogSectionTitle = () => {
   return (
     <div className="d-flex align-items-center login-section-title">
       <div className="col-3">Category</div>
@@ -11,6 +11,8 @@ function LogSectionTitle() {
       <div>Status</div>
     </div>
   );
-}
+};
+
+LogSectionTitle.propTypes = {};
 
 export default LogSectionTitle;

@@ -16,4 +16,6 @@ const AuthRight = () => {
   );
 };
 
+AuthRight.propTypes = {};
+
 export default AuthRight;

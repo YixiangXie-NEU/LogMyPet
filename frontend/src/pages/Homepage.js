@@ -8,7 +8,7 @@ import RightPanel from "../components/RightPanel";
 import Modal from "../components/Popups/Modal";
 import Mask from "../components/Popups/Mask";
 
-function Homepage() {
+const Homepage = () => {
   const openModal = useContext(ModalContext).openModal;
   let navigate = useNavigate();
 
@@ -43,6 +43,8 @@ function Homepage() {
       </div>
     </div>
   );
-}
+};
+
+Homepage.propTypes = {};
 
 export default Homepage;

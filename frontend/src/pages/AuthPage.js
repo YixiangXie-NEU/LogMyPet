@@ -21,4 +21,6 @@ const AuthPage = () => {
   );
 };
 
+AuthPage.propTypes = {};
+
 export default AuthPage;

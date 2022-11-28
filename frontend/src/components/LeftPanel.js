@@ -5,13 +5,15 @@ import LogSection from "./LogSection";
 
 import "../assets/styles/LeftPanel.css";
 
-function LeftPanel() {
+const LeftPanel = () => {
   return (
     <div className="col-9 d-flex flex-column left-panel">
       <PetSection />
       <LogSection />
     </div>
   );
-}
+};
+
+LeftPanel.propTypes = {};
 
 export default LeftPanel;
