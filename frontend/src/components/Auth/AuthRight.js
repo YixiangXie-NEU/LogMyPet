@@ -1,5 +1,6 @@
 import React from "react";
 import "../../assets/styles/Auth.css";
+import illustration from "../../assets/images/login-illustration.png";
 
 const AuthRight = () => {
   return (
@@ -10,7 +11,8 @@ const AuthRight = () => {
       </div>
       <img
         className="auth-right-pic"
-        src="https://assets.moveshanghai.com/Open%20Doodles%20-%20Playing.png"
+        src={illustration}
+        alt="An illustration of a person and a dog."
       ></img>
     </div>
   );

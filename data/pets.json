@@ -1,12 +1,43 @@
 [{
-  "type": "cat",
-  "breed": "American Shorthair",
-  "name": "meow",
-  "gender": "male",
-  "birthday": {
-    "$date": {
-      "$numberLong": "1571641200000"
-    }
+  "_id": {
+    "$oid": "637d10d35c9984654169e296"
   },
-  "personality": "shy"
+  "userId": "638443453dd5d09ed40eec7e",
+  "name": "Lilca",
+  "species": "Cat",
+  "breed": "American shorthair",
+  "color": "Black and white",
+  "gender": "Male",
+  "birthday": "November 1st, 2020",
+  "personality": "Shy",
+  "neuteredOrSpayed": true,
+  "weight": "5kg"
+},{
+  "_id": {
+    "$oid": "637d114a09071db97148a2b6"
+  },
+  "userId": "638443453dd5d09ed40eec7e",
+  "name": "Bambi",
+  "species": "Cat",
+  "breed": "American shorthair",
+  "color": "Black and white",
+  "gender": "Male",
+  "birthday": "November 1st, 2020",
+  "personality": "Shy",
+  "neuteredOrSpayed": true,
+  "weight": "5kg"
+},{
+  "_id": {
+    "$oid": "637d169d5d92a22e072de62b"
+  },
+  "userId": "638443453dd5d09ed40eec7e",
+  "name": "Caral",
+  "species": "Cat",
+  "breed": "Amrshort",
+  "color": "BW",
+  "gender": "Male",
+  "birthday": "Nov. 1st, 2021",
+  "personality": "shy",
+  "neuteredOrSpayed": true,
+  "weight": "5kg"
 }]

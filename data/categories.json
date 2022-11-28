@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "638409972cee931320d80a80"
+  },
+  "name": "Eating",
+  "imgUrl": "https://assets.moveshanghai.com/lmp_09.png"
+},{
+  "_id": {
+    "$oid": "63840a0d2cee931320d80a81"
+  },
+  "name": "Drinking",
+  "imgUrl": "https://assets.moveshanghai.com/lmp_06.png"
+},{
+  "_id": {
+    "$oid": "63840a712cee931320d80a82"
+  },
+  "name": "Poop",
+  "imgUrl": "https://assets.moveshanghai.com/lmp_08.png"
+},{
+  "_id": {
+    "$oid": "63840ad02cee931320d80a83"
+  },
+  "name": "Pee",
+  "imgUrl": "https://assets.moveshanghai.com/lmp_07.png"
+}]

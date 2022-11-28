@@ -8,7 +8,11 @@
   "author": "Yixiang Xie & Ting Tang",
   "license": "MIT",
   "scripts": {
-    "init:db": "mongoimport -d logMyPetDB -c pets --jsonArray --file ./data/pets.json",
+    "initdb:pets": "mongoimport -d logMyPetDB -c pets --jsonArray --file ./data/pets.json",
+    "initdb:users": "mongoimport -d logMyPetDB -c users --jsonArray --file ./data/users.json",
+    "initdb:categories": "mongoimport -d logMyPetDB -c categories --jsonArray --file ./data/categories.json",
+    "initdb:records": "mongoimport -d logMyPetDB -c records --jsonArray --file ./data/records.json",
+    "init:db": "initdb:pets && initdb:users && initdb:categories && initdb:records",
     "install:all": "yarn && cd frontend && yarn",
     "build": "cd frontend && yarn clean && yarn build",
     "start": "yarn build && nodemon app.js",
