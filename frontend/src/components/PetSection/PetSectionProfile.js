@@ -9,7 +9,7 @@ import "../../assets/styles/Colors.css";
 
 const PetSectionProfile = ({ pets }) => (
   <Carousel
-    items={pets.map((pet, index) => (
+    items={pets.slice(0, 3).map((pet, index) => (
       <PetSectionProfileItem pet={pet} key={index} />
     ))}
     Loading={PetSectionProfileItemLoading}

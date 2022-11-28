@@ -50,6 +50,7 @@ const PetInfoForm = ({
         onChange={(event) => {
           setPet({ ...pet, name: event.target.value });
         }}
+        required
       />
       <PetInfoInput
         placeholder="Species"
@@ -57,6 +58,7 @@ const PetInfoForm = ({
         onChange={(event) => {
           setPet({ ...pet, species: event.target.value });
         }}
+        required
       />
       <PetInfoInput
         placeholder="Breed"
@@ -64,6 +66,7 @@ const PetInfoForm = ({
         onChange={(event) => {
           setPet({ ...pet, breed: event.target.value });
         }}
+        required
       />
       <PetInfoInput
         placeholder="Color"
@@ -71,6 +74,7 @@ const PetInfoForm = ({
         onChange={(event) => {
           setPet({ ...pet, color: event.target.value });
         }}
+        required
       />
       <PetInfoInput
         placeholder="Weight"
@@ -78,6 +82,7 @@ const PetInfoForm = ({
         onChange={(event) => {
           setPet({ ...pet, weight: event.target.value });
         }}
+        required
       />
       <RadioGroup
         title="Gender"
@@ -105,6 +110,7 @@ const PetInfoForm = ({
         onChange={(event) => {
           setPet({ ...pet, birthday: event.target.value });
         }}
+        required
       />
       <textarea
         className="form-control"

@@ -3,11 +3,16 @@ import React from "react";
 
 import "../../assets/styles/Colors.css";
 import "../../assets/styles/PetProfile.css";
+import petProfile from "../../assets/images/pet-profile.png";
 
 const PetProfile = ({ name, gender, weight, neuteredOrSpayed }) => (
   <div className="d-flex align-items-center">
     <div>
-      <div className="pet-profile-pic purple-solid"></div>
+      <img
+        src={petProfile}
+        className="pet-profile-pic"
+        alt="A example pic for pet profile."
+      ></img>
     </div>
     <div className="d-flex flex-column">
       <span className="pet-profile-title">{name}</span>

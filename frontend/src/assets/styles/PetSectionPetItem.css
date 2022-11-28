@@ -1,0 +1,18 @@
+.pet-section-pet-item-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-right: 14px;
+}
+
+.pet-section-pet-item-title {
+  font-weight: 500;
+}
+
+.right-icon {
+  margin-left: auto;
+}
+
+.pet-section-pet-item-description > *:not(:last-child) {
+  margin-right: 10px;
+}

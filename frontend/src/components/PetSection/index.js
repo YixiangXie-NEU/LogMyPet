@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import PetSectionHeader from "./PetSectionHeader";
 import PetSectionProfile from "./PetSectionProfile";
-import PetSectionBehavior from "./PetSectionBehavior";
+import PetSectionPets from "./PetSectionPets";
 
 const PetSection = () => {
   const [pets, setPets] = useState([]);
@@ -31,7 +31,7 @@ const PetSection = () => {
       <PetSectionHeader pets={pets} />
       <div className="d-flex flex-xxl-row flex-column justify-content-between">
         <PetSectionProfile pets={pets} />
-        <PetSectionBehavior />
+        <PetSectionPets pets={pets} />
       </div>
     </div>
   );
