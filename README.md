@@ -1,6 +1,6 @@
 # LogMyPet
 
-This is the repo of [LogMyPet]().
+This is the repo of [LogMyPet](https://github.com/YixiangXie-NEU/LogMyPet).
 
 **Author**: Yixiang Xie & Ting Tang
 
@@ -17,6 +17,7 @@ This is the repo of [LogMyPet]().
 1. Navigate to the root directory (run `cd LogMyPet` in your terminal)
 1. Init the database with our data (run `yarn init:db` in your terminal)
 1. Install all the required dependencies (run `yarn install:all` in your terminal)
+1. Create a `.env` file and configure proper session secrete (refer to `.env_example`)
 1. Build and run the project locally (run `yarn start` in your terminal)
 1. Access the page in `http://localhost:3000`
 
