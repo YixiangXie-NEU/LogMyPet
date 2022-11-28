@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 app.use(
   session({
-    secret: "local test",
+    secret: config.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })

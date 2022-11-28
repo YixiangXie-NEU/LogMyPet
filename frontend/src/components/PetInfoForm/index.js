@@ -27,7 +27,7 @@ const PetInfoForm = ({
       personality: "",
     }
   );
-  const [neuteredOrSpayed, setNeuteredOrSpayed] = useState();
+  const [neuteredOrSpayed, setNeuteredOrSpayed] = useState("");
 
   useEffect(() => {
     if (initPet) {
