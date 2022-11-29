@@ -70,7 +70,8 @@ const getPets = async (req, res) => {
     res.json(result);
   } catch (err) {
     console.log(`Error occurred while getting pets: ${err.message}`);
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   } finally {
     console.log("getPets: Closing db connection");
     client.close();
@@ -92,7 +93,8 @@ const getOnePet = async (req, res) => {
     console.log(
       `Error occurred while getting pet ${req.params.id}: ${err.message}`
     );
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   } finally {
     console.log("getOnePet: Closing db connection");
     client.close();
@@ -110,7 +112,8 @@ const createPet = async (req, res) => {
     res.json(result);
   } catch (err) {
     console.log(`Error occurred while creating pet: ${err.message}`);
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   } finally {
     console.log("createPet: Closing db connection");
     client.close();
@@ -130,12 +133,14 @@ const editPet = async (req, res) => {
       }
     );
     console.log(`Pet ${req.params.id} is updated.`);
-    res.json({ status: 200 });
+    res.json();
+    res.status(200);
   } catch (err) {
     console.log(
       `Error occurred while getting pet ${req.params.id}: ${err.message}`
     );
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   } finally {
     console.log("editPet: Closing db connection");
     client.close();
@@ -152,12 +157,12 @@ const deletePet = async (req, res) => {
     console.log(`Pet ${req.params.id} is deleted.`);
     res.json();
     res.status(200);
-    console.log("🚀 ~ file: index.js ~ line 155 ~ deletePet ~ res", res);
   } catch (err) {
     console.log(
       `Error occurred while deleting pet ${req.params.id}: ${err.message}`
     );
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   } finally {
     console.log("deletePet: Closing db connection");
     client.close();
@@ -219,7 +224,8 @@ const createUser = async (req, res) => {
     }
   } catch (e) {
     console.log(e.message || "err ocurred while creating user");
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   }
 };
 
@@ -236,7 +242,8 @@ const createRecord = async (req, res) => {
     res.json(result);
   } catch (err) {
     console.log(`Error occurred while creating record: ${err.message}`);
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   }
 };
 
@@ -253,7 +260,8 @@ const getCategories = async (req, res) => {
     res.json(result);
   } catch (err) {
     console.log(`Error occurred while getting categories: ${err.message}`);
-    res.json({ status: 500 });
+    res.json();
+    res.status(500);
   }
 };
 
