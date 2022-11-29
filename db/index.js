@@ -150,7 +150,7 @@ const deletePet = async (req, res) => {
     const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
     await petsCol.deleteOne({ _id: ObjectId(req.params.id) });
     console.log(`Pet ${req.params.id} is deleted.`);
-    res.status(200);
+    res.json({ status: 200 });
   } catch (err) {
     console.log(
       `Error occurred while deleting pet ${req.params.id}: ${err.message}`
