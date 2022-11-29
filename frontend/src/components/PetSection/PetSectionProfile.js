@@ -12,7 +12,7 @@ const PetSectionProfile = ({ pets }) => (
     items={pets.slice(0, 3).map((pet, index) => (
       <PetSectionProfileItem pet={pet} key={index} />
     ))}
-    Loading={PetSectionProfileItemLoading}
+    loading={<PetSectionProfileItemLoading />}
   />
 );
 

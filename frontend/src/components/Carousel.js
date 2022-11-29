@@ -4,7 +4,7 @@ import React from "react";
 import "../assets/styles/Colors.css";
 import "../assets/styles/Carousel.css";
 
-const Carousel = ({ items, Loading }) => (
+const Carousel = ({ items, loading }) => (
   <div
     id="carouselExampleDark"
     className="carousel carousel-dark slide col-12 col-xxl-6 conditional-margin"
@@ -25,7 +25,7 @@ const Carousel = ({ items, Loading }) => (
     </div>
     <div className="carousel-inner">
       {items.length === 0 ? (
-        <Loading />
+        <React.Fragment>{loading}</React.Fragment>
       ) : (
         <React.Fragment>
           {items.map((item, index) => (
@@ -62,7 +62,7 @@ const Carousel = ({ items, Loading }) => (
 
 Carousel.propTypes = {
   items: PropTypes.arrayOf(PropTypes.node).isRequired,
-  Loading: PropTypes.node.isRequired,
+  loading: PropTypes.node.isRequired,
 };
 
 export default Carousel;
