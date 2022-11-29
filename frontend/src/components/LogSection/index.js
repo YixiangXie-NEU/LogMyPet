@@ -25,7 +25,10 @@ const LogSection = () => {
         },
       });
       if (res.ok) {
-        const data = await res.json();
+        const result = await res.json();
+        const data = result.sort(
+          (a, b) => new Date(b.timestamp_day) - new Date(a.timestamp_day)
+        );
         for (let i = 0; i < data.length; i++) {
           data[i].timestamp_day = moment(data[i].timestamp_day).format(
             "MMM Do YYYY"
