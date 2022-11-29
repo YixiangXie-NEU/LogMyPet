@@ -17,7 +17,7 @@ const LogSectionItem = () => {
       <div>
         <span className="tag background-orange-light">Active</span>
       </div>
-      <a href="/detail/1" className="log-section-item-anchor">
+      <a href="/log-detail/1" className="log-section-item-anchor">
         <UilEllipsis size="30" color={"#323EF7"} />
         <span className="visually-hidden">Detail</span>
       </a>
