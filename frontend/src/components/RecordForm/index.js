@@ -57,8 +57,10 @@ const RecordForm = () => {
       category: {
         id: selectedCategory,
         name: categories.filter((item) => item._id == selectedCategory)[0].name,
+        imgUrl: categories.filter((item) => item._id == selectedCategory)[0].imgUrl,
       },
       petId: allPets.filter((item) => item.name == selectedPet)[0]._id,
+      timestamp_day: new Date(),
       about: description,
     };
     console.log(record);
