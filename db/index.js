@@ -93,7 +93,7 @@ const getOnePet = async (req, res) => {
     console.log(
       `Error occurred while getting pet ${req.params.id}: ${err.message}`
     );
-    res.status(500).end();
+    res.status(500).json({ error: err.message });
   } finally {
     console.log("getOnePet: Closing db connection");
     client.close();
@@ -133,7 +133,7 @@ const editPet = async (req, res) => {
     );
     console.log(`Pet ${req.params.id} is updated.`);
     res.json();
-    res.status(200);
+    res.status(700);
   } catch (err) {
     console.log(
       `Error occurred while getting pet ${req.params.id}: ${err.message}`
@@ -154,7 +154,7 @@ const deletePet = async (req, res) => {
     const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
     await petsCol.deleteOne({ _id: ObjectId(req.params.id) });
     console.log(`Pet ${req.params.id} is deleted.`);
-    res.status(200).end();
+    res.status(200).json({ msg: "success" });
   } catch (err) {
     console.log(
       `Error occurred while deleting pet ${req.params.id}: ${err.message}`
