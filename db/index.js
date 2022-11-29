@@ -88,6 +88,8 @@ const getOnePet = async (req, res) => {
       .toArray();
     console.log(`Pet ${req.params.id} is retrieved.`);
     res.json(result);
+    res.status(700);
+    console.log("🚀 ~ file: index.js ~ line 71 ~ getPets ~ res", res);
   } catch (err) {
     console.log(
       `Error occurred while getting pet ${req.params.id}: ${err.message}`
