@@ -93,7 +93,7 @@ const getOnePet = async (req, res) => {
     console.log(
       `Error occurred while getting pet ${req.params.id}: ${err.message}`
     );
-    res.sendStatus(500);
+    res.status(500).end();
   } finally {
     console.log("getOnePet: Closing db connection");
     client.close();
