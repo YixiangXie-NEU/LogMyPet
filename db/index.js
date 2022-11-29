@@ -95,6 +95,7 @@ const getOnePet = async (req, res) => {
     );
     res.json();
     res.status(500);
+    console.log("🚀 ~ file: index.js ~ line 98 ~ getOnePet ~ res", res);
   } finally {
     console.log("getOnePet: Closing db connection");
     client.close();

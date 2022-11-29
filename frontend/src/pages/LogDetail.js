@@ -23,7 +23,7 @@ const LogDetail = () => (
           <span className="log-detail-date">25 Nov, 2022</span>
           <div>
             <button className="small-button log-detail-edit-button purple-solid">
-              Edit profile
+              Edit record
             </button>
           </div>
         </div>
