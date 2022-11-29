@@ -10,7 +10,10 @@ const LogSectionItem = ({ record }) => {
   return (
     <div className="d-flex align-items-center background-purple-light login-section-item">
       <div className="col-3 d-flex align-items-center">
-        <img className="log-section-item-pic" src={record.category.imgUrl} />
+        <div
+          className="log-section-item-pic"
+          style={{ backgroundImage: `url(${record.category.imgUrl})` }}
+        />
         <span className="log-section-item-title">{record.category.name}</span>
       </div>
       <div className="col-2">{record.timestamp_day}</div>

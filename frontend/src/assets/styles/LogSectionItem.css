@@ -8,8 +8,10 @@
 }
 
 .log-section-item-pic {
-  width: 6vw;
-  height: 6vw;
+  width: 32px;
+  height: 32px;
+  background-position: 48px 51px;
+  background-size: 64px;
   border-radius: 5px;
   margin-right: 20px;
 }

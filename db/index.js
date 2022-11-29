@@ -200,7 +200,7 @@ const createRecord = async (req, res) => {
 
 const getRecords = async (req, res) => {
   let client;
-  let page = req.query.page || 0;
+  // let page = req.query.page || 0;
   console.log(req.query);
 
   try {
@@ -209,12 +209,13 @@ const getRecords = async (req, res) => {
       .db(DB_NAME)
       .collection(RECORD_COLLECTION_NAME)
       .find({})
-      .skip(PAGE_SIZE * page)
-      .limit(PAGE_SIZE)
+      // .skip(PAGE_SIZE * page)
+      // .limit(PAGE_SIZE)
       .toArray();
-    console.log(
-      `Page ${page} of pets are retrieved. Example record[0]: ${result[0]}`
-    );
+    // console.log(
+    //   `Page ${page} of records are retrieved. Example record[0]: ${result[0]}`
+    // );
+    console.log(`Records are retrieved. Example record[0]: ${result[0]}`);
     res.json(result);
   } catch (err) {
     console.log(`Error occurred while getting record: ${err.message}`);

@@ -5,21 +5,20 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import UilPlus from "@iconscout/react-unicons/icons/uil-plus";
 
-import LogSectionTitle from "./LogSectionTitle";
 import LogSectionItem from "./LogSectionItem";
+import LogSectionItemLoading from "./LogSectionItemLoading";
+import LogSectionTitle from "./LogSectionTitle";
 
 import "../../assets/styles/Buttons.css";
 import "../../assets/styles/LogSection.css";
 
 const LogSection = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [page, setPage] = useState(1);
   const [records, setRecords] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getRecords() {
-      const res = await fetch(`/api/records?page=${page}`, {
+      const res = await fetch("/api/records", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +28,7 @@ const LogSection = () => {
         const data = await res.json();
         for (let i = 0; i < data.length; i++) {
           data[i].timestamp_day = moment(data[i].timestamp_day).format(
-            "MMM Do YY"
+            "MMM Do YYYY"
           );
         }
         setRecords(data);
@@ -60,9 +59,13 @@ const LogSection = () => {
       </div>
       <LogSectionTitle />
       <div className="d-flex flex-column position-relative log-section-items">
-        {records.map((record) => (
-          <LogSectionItem key={record._id} record={record} />
-        ))}
+        {records.length === 0 ? (
+          <LogSectionItemLoading />
+        ) : (
+          records.map((record) => (
+            <LogSectionItem key={record._id} record={record} />
+          ))
+        )}
       </div>
     </div>
   );
