@@ -44,6 +44,11 @@ const AuthForm = ({ content }) => {
       setErrAlert("Field can't be empty");
     }
 
+    /* This might seem like a small thing, but great use of 
+       of variable "BASE_URL" with the descriptive name. It made
+       the url parameter of your fetch function and the entire
+       function more readable. Also, I found other places in
+       your code where you did the same. Great job! */
     let BASE_URL;
 
     if (content.page == "login") {
