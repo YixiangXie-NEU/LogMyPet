@@ -2,6 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
+/* First of, excellent folder structure for the entire project! It's impressive how 
+   you structured your folders with pages seperate from components and further nested 
+   folders with intuitive naming. It made it really easy to navigate your 
+   project to find files. Great job! */
+
 import App from "./pages/App.js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
