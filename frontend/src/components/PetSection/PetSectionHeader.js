@@ -54,6 +54,9 @@ function PetSectionHeader({ pets }) {
   );
 }
 
+/* Great job adding propTypes to all components. Made it easy to
+   figure out what was being passed from parent to child */
+
 PetSectionHeader.propTypes = {
   pets: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
