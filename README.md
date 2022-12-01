@@ -1,3 +1,4 @@
+Commenting on Project3 by Lingyi Zheng: I like the idea of the project which is convinent for people who have pets and record pets' daily behaviors. And I love the cute icon you guys made for behaviors like drinking water. The whole design style is clear and easy to follow. And I also like how well structure and organized your folders have and connection between backend and frontend. But i didn't see your released version. Maybe, adding released link in readme will be perfect:) 
 # LogMyPet
 
 [80% Milestone](https://github.com/YixiangXie-NEU/LogMyPet/releases/tag/milestone-80pct)
