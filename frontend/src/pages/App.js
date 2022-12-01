@@ -8,6 +8,10 @@ import CreatePet from "./CreatePet";
 import PetDetail from "./PetDetail";
 import CreateRecord from "./CreateRecord";
 
+/* While you do have a pretty impressive project overall, I couldn't
+   tell from reviewing the code who worked on what. It might be a good idea
+   to include the name(s) at the top of each file*/
+
 const App = () => {
   return (
     <Routes>
