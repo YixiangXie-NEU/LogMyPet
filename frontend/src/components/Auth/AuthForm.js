@@ -9,29 +9,12 @@ const AuthForm = ({ content }) => {
   const passwordInputRef = useRef();
 
   const navigate = useNavigate();
-  // const location = useLocation();
 
   const [isAuthCorrect, setIsAuthCorrect] = useState(true);
   const [errAlert, setErrAlert] = useState("");
 
-  // useEffect(() => {
-  //   async function check() {
-  //     fetch("/api/getCurrUser", {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     }).then((res) => {
-  //       if (res.ok) {
-  //         navigate("/");
-  //       } else {
-  //         if (location.pathname != "/signup") navigate("/login");
-  //       }
-  //     });
-  //   }
-
-  //   check();
-  // }, []);
+  /* It's a good idea to delete leftover commented code. Especially
+     commented functions. It makes for better readability of your code. */
 
   const submitHandler = async (event) => {
     event.preventDefault();
