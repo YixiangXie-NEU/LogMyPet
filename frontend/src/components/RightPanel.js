@@ -8,7 +8,7 @@ import rightPanelIllustration from "../assets/images/right-panel-illustration.pn
 
 const RightPanel = () => {
   return (
-    <div className="col-3 p-0 d-flex flex-column justify-content-between background-purple-light right-panel">
+    <div className="col-3 p-0 d-lg-flex d-none flex-column justify-content-between background-purple-light right-panel">
       <RightPanelProfile />
       <div className="d-flex right-panel-image-section">
         <img

@@ -21,9 +21,3 @@
   line-height: 38px;
   margin-bottom: 4px;
 }
-
-@media (max-width: 1400px) {
-  .pet-section-item-content {
-    padding: 32px 120px;
-  }
-}

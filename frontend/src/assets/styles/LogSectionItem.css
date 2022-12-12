@@ -22,11 +22,11 @@
 
 .log-section-item-anchor {
   margin-left: auto;
-  cursor: pointer;
 }
 
 .log-section-text {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-align: left;
 }

@@ -7,7 +7,7 @@ import "../assets/styles/LeftPanel.css";
 
 const LeftPanel = () => {
   return (
-    <div className="col-9 d-flex flex-column left-panel">
+    <div className="col-lg-9 col-12 d-flex flex-column left-panel">
       <PetSection />
       <LogSection />
     </div>

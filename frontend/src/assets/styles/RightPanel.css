@@ -1,6 +1,9 @@
 .right-panel {
   height: 100vh;
   min-height: 720px;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 .right-panel-image-section {

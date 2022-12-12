@@ -1,53 +1,75 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import UilAngleLeft from "@iconscout/react-unicons/icons/uil-angle-left-b";
+import moment from "moment";
 
+import PetProfile from "../PetSection/PetProfile";
 import PetInfoDisplayItem from "./PetInfoDisplayItem";
 
 import "../../assets/styles/PetInfoDisplay.css";
 
-const PetInfoDisplay = ({ pet, handleCancel, handleDelete, handleEdit }) => (
-  <div>
-    {pet.name ? (
-      <div className="d-flex flex-column">
-        <PetInfoDisplayItem label="Species" value={pet.species} />
-        <PetInfoDisplayItem label="Breed" value={pet.breed} />
-        <PetInfoDisplayItem label="Color" value={pet.color} />
-        <PetInfoDisplayItem label="Weight" value={pet.weight} />
-        <PetInfoDisplayItem label="Gender" value={pet.gender} />
-        <PetInfoDisplayItem
-          label="Neutered/Spayed"
-          value={pet.neuteredOrSpayed ? "Yes" : "No"}
-        />
-        <PetInfoDisplayItem label="Birthday" value={pet.birthday} />
-        <PetInfoDisplayItem label="Personality" value={pet.personality} />
-      </div>
-    ) : (
-      <Skeleton height="27px" count={8} />
-    )}
-    <div className="d-flex flex-column pet-info-display-button-section">
-      <button
-        type="button"
-        className="medium-button pet-info-display-back-button"
-        onClick={handleCancel}
+const PetInfoDisplay = ({ pet, handleDelete, handleEdit }) => (
+  <div role="main" className="container-fluid vh-100 p-0">
+    <div className="log-detail">
+      <a
+        href="/"
+        className="d-inline-flex align-items-center log-detail-back-anchor"
       >
+        <UilAngleLeft className="left-icon" size="20" />
         Back
-      </button>
-      <div className="d-flex pet-info-display-button-section-sub">
-        <button
-          type="button"
-          className="medium-button orange-solid"
-          onClick={handleDelete}
-        >
-          Delete
-        </button>
-        <button
-          type="button"
-          className="medium-button purple-solid pet-info-display-edit-button"
-          onClick={handleEdit}
-        >
-          Edit
-        </button>
+      </a>
+      <PetProfile
+        name={pet.name}
+        gender={pet.gender}
+        weight={pet.weight}
+        neuteredOrSpayed={pet.neuteredOrSpayed}
+      />
+      <div className="d-flex flex-column log-detail-edit">
+        <div className="d-flex justify-content-between">
+          <div className="log-detail-title">Details</div>
+          <div>
+            <button
+              className="small-button log-detail-button orange-solid"
+              onClick={handleDelete}
+            >
+              Delete pet
+            </button>
+            <button
+              className="small-button log-detail-button purple-solid"
+              onClick={handleEdit}
+            >
+              Edit pet
+            </button>
+          </div>
+        </div>
+        <div className="log-detail-content background-purple-light">
+          {pet.name ? (
+            <div className="d-flex justify-content-start">
+              <div className="d-flex flex-column">
+                <PetInfoDisplayItem label="Species" value={pet.species} />
+                <PetInfoDisplayItem label="Breed" value={pet.breed} />
+                <PetInfoDisplayItem label="Color" value={pet.color} />
+                <PetInfoDisplayItem label="Weight" value={pet.weight} />
+                <PetInfoDisplayItem label="Gender" value={pet.gender} />
+                <PetInfoDisplayItem
+                  label="Neutered/Spayed"
+                  value={pet.neuteredOrSpayed ? "Yes" : "No"}
+                />
+                <PetInfoDisplayItem
+                  label="Birthday"
+                  value={moment(new Date(pet.birthday)).format("MMM Do YYYY")}
+                />
+                <PetInfoDisplayItem
+                  label="Personality"
+                  value={pet.personality}
+                />
+              </div>
+            </div>
+          ) : (
+            <Skeleton height="27px" width="250px" count={8} />
+          )}
+        </div>
       </div>
     </div>
   </div>
@@ -55,7 +77,6 @@ const PetInfoDisplay = ({ pet, handleCancel, handleDelete, handleEdit }) => (
 
 PetInfoDisplay.propTypes = {
   pet: PropTypes.object.isRequired,
-  handleCancel: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   handleEdit: PropTypes.func.isRequired,
 };

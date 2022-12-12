@@ -7,7 +7,7 @@ import userProfile from "../assets/images/user-profile.png";
 const RightPanelProfile = () => {
   return (
     <div className="d-flex flex-column align-items-center right-pane-profile">
-      <div className="right-pane-title">My profile</div>
+      <div className="right-pane-title">User profile</div>
       <img
         src={userProfile}
         className="right-pane-profile-pic"
@@ -15,7 +15,7 @@ const RightPanelProfile = () => {
       ></img>
       <div className="right-pane-user-name">Jasmine</div>
       <button className="small-button right-pane-edit-profile-button purple-solid">
-        Edit profile
+        Log out
       </button>
     </div>
   );

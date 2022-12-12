@@ -44,7 +44,9 @@ const RecordForm = () => {
         },
       });
       const data = await res.json();
-      const names = data.map((item) => item.name);
+      const names = data
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+        .map((item) => item.name);
       setPets(names);
       setAllPets(data);
       setSelectedPet(data[0].name);
@@ -55,6 +57,7 @@ const RecordForm = () => {
   }, []);
 
   const handleSubmit = async () => {
+    const pet = allPets.filter((item) => item.name == selectedPet)[0];
     const record = {
       category: {
         id: selectedCategory,
@@ -62,7 +65,13 @@ const RecordForm = () => {
         imgUrl: categories.filter((item) => item._id == selectedCategory)[0]
           .imgUrl,
       },
-      petId: allPets.filter((item) => item.name == selectedPet)[0]._id,
+      pet: {
+        id: pet._id,
+        name: pet.name,
+        gender: pet.gender,
+        weight: pet.weight,
+        neuteredOrSpayed: pet.neuteredOrSpayed,
+      },
       timestamp_day: new Date(),
       about: description,
     };
@@ -131,7 +140,7 @@ const RecordForm = () => {
       <div className="cr-title">Record your observation</div>
       <textarea
         className="form-control"
-        placeholder="Description"
+        placeholder="Description (Optional)"
         aria-label="Description"
         onChange={(event) => {
           setDescription(event.target.value);

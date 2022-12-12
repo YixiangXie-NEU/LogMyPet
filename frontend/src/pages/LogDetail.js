@@ -16,8 +16,7 @@ const LogDetail = () => {
   const navigate = useNavigate();
 
   const [record, setRecord] = useState({});
-  const [pet, setPet] = useState({});
-  const [content, setNewContent] = useState({});
+  const [content, setNewContent] = useState("");
   const [editRecord, setEditRecord] = useState(false);
 
   const getRecord = async () => {
@@ -30,7 +29,6 @@ const LogDetail = () => {
     if (res.ok) {
       const data = await res.json();
       data[0].timestamp_day = moment(data.timestamp_day).format("MMM Do YYYY");
-      data[0].category_name = data[0].category.name;
       setRecord(data[0]);
     } else {
       console.log(res.statusText);
@@ -41,29 +39,13 @@ const LogDetail = () => {
     getRecord();
   }, []);
 
-  const getPet = async () => {
-    const res = await fetch("/api/pet/" + record.petId, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      setPet(data[0]);
-    } else {
-      console.log(res.statusText);
-    }
-  };
-
-  useEffect(() => {
-    if (record.petId) {
-      getPet();
-    }
-  }, [record.petId]);
-
   const changeRecord = () => {
     setEditRecord(true);
+    setNewContent(record.about);
+  };
+
+  const handleCancel = () => {
+    setEditRecord(false);
   };
 
   const handleEdit = async () => {
@@ -99,7 +81,7 @@ const LogDetail = () => {
   };
 
   return (
-    <div className="container-fluid vh-100 p-0">
+    <div role="main" className="container-fluid vh-100 p-0">
       <div className="log-detail">
         <a
           href="/"
@@ -109,38 +91,58 @@ const LogDetail = () => {
           Back
         </a>
         <PetProfile
-          name={pet.name}
-          gender={pet.gender}
-          weight={pet.weight}
-          neuteredOrSpayed={pet.neuteredOrSpayed}
+          name={record.pet?.name}
+          gender={record.pet?.gender}
+          weight={record.pet?.weight}
+          neuteredOrSpayed={record.pet?.neuteredOrSpayed}
         />
         <div className="d-flex flex-column log-detail-edit">
           <div className="d-flex justify-content-between">
             <span className="log-detail-date">
               {record.timestamp_day ? (
-                record.timestamp_day
+                `${record.category.name} on ${record.timestamp_day}`
               ) : (
                 <Skeleton width="150px" />
               )}
             </span>
-            <div>
-              <img
-                onClick={changeRecord}
-                className="log-detail-icon"
-                src={"https://assets.moveshanghai.com/logedit.png"}
-              />
-              <img
-                onClick={handleDelete}
-                className="log-detail-icon"
-                src={"https://assets.moveshanghai.com/delete.png"}
-              />
-            </div>
+            {!editRecord && (
+              <div>
+                <button
+                  className="small-button log-detail-button orange-solid"
+                  onClick={handleDelete}
+                >
+                  Delete record
+                </button>
+                <button
+                  className="small-button log-detail-button purple-solid"
+                  onClick={changeRecord}
+                >
+                  Edit record
+                </button>
+              </div>
+            )}
+            {editRecord && (
+              <div>
+                <button
+                  className="small-button log-detail-button gray-solid log-detail-button-black"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="small-button log-detail-button purple-solid"
+                  onClick={handleEdit}
+                >
+                  Save record
+                </button>
+              </div>
+            )}
           </div>
           {!editRecord && (
             <div className="log-detail-content background-purple-light">
               <div className="log-detail-title">Description</div>
               {record.category ? (
-                <div className="log-detail-description">{`${record.category.name}: ${record.about}`}</div>
+                <div className="log-detail-description">{record.about}</div>
               ) : (
                 <Skeleton width="150px" className="mt-3" />
               )}
@@ -152,19 +154,8 @@ const LogDetail = () => {
               onChange={(event) => {
                 setNewContent(event.target.value);
               }}
-            >
-              {record.about}
-            </textarea>
-          )}
-          {editRecord && (
-            <div>
-              <button
-                className="small-button log-detail-edit-button purple-solid"
-                onClick={handleEdit}
-              >
-                Save record
-              </button>
-            </div>
+              defaultValue={record.about}
+            ></textarea>
           )}
         </div>
       </div>

@@ -18,7 +18,7 @@ const PetSectionPetItem = ({ pet }) => {
 
   return (
     <button
-      className="col-12 col-xxl-11 d-inline-flex align-items-center large-button background-purple-light"
+      className="col-12 col-xl-11 d-inline-flex align-items-center large-button background-purple-light"
       onClick={handleButtonClick}
     >
       <img

@@ -47,7 +47,7 @@ function PetSectionHeader({ pets }) {
           onClick={handleCreatePet}
         >
           <UilPlus className="plus-icon" size="20" />
-          Add pets
+          Add pet
         </button>
       </div>
     </div>
