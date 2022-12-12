@@ -114,7 +114,7 @@ const LogDetail = () => {
                   Delete record
                 </button>
                 <button
-                  className="small-button log-detail-button purple-solid"
+                  className="small-button log-detail-button purple-solid log-detail-button-white"
                   onClick={changeRecord}
                 >
                   Edit record
@@ -124,13 +124,13 @@ const LogDetail = () => {
             {editRecord && (
               <div>
                 <button
-                  className="small-button log-detail-button gray-solid log-detail-button-black"
+                  className="small-button log-detail-button gray-solid"
                   onClick={handleCancel}
                 >
                   Cancel
                 </button>
                 <button
-                  className="small-button log-detail-button purple-solid"
+                  className="small-button log-detail-button purple-solid log-detail-button-white"
                   onClick={handleEdit}
                 >
                   Save record

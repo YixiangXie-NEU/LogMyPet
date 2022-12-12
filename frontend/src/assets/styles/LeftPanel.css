@@ -2,3 +2,9 @@
   padding: 56px 46px 0 48px;
   min-height: 720px;
 }
+
+@media (max-width: 1199px) {
+  .left-panel {
+    padding: 40px 48px;
+  }  
+}

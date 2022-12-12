@@ -1,5 +1,6 @@
 import React from "react";
 
+import "../assets/styles/Colors.css";
 import "../assets/styles/Buttons.css";
 import "../assets/styles/RightPanelProfile.css";
 import userProfile from "../assets/images/user-profile.png";

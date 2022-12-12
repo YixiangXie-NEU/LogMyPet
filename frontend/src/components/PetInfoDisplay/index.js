@@ -11,10 +11,10 @@ import "../../assets/styles/PetInfoDisplay.css";
 
 const PetInfoDisplay = ({ pet, handleDelete, handleEdit }) => (
   <div role="main" className="container-fluid vh-100 p-0">
-    <div className="log-detail">
+    <div className="pet-info-display">
       <a
         href="/"
-        className="d-inline-flex align-items-center log-detail-back-anchor"
+        className="d-inline-flex align-items-center pet-info-display-back-anchor"
       >
         <UilAngleLeft className="left-icon" size="20" />
         Back
@@ -25,25 +25,25 @@ const PetInfoDisplay = ({ pet, handleDelete, handleEdit }) => (
         weight={pet.weight}
         neuteredOrSpayed={pet.neuteredOrSpayed}
       />
-      <div className="d-flex flex-column log-detail-edit">
+      <div className="d-flex flex-column pet-info-display-edit">
         <div className="d-flex justify-content-between">
-          <div className="log-detail-title">Details</div>
+          <div className="pet-info-display-title">Details</div>
           <div>
             <button
-              className="small-button log-detail-button orange-solid"
+              className="small-button pet-info-display-button orange-solid"
               onClick={handleDelete}
             >
               Delete pet
             </button>
             <button
-              className="small-button log-detail-button purple-solid"
+              className="small-button pet-info-display-button purple-solid pet-info-display-button-white"
               onClick={handleEdit}
             >
               Edit pet
             </button>
           </div>
         </div>
-        <div className="log-detail-content background-purple-light">
+        <div className="pet-info-display-content background-purple-light">
           {pet.name ? (
             <div className="d-flex justify-content-start">
               <div className="d-flex flex-column">
