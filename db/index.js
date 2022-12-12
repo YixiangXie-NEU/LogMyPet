@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from "mongodb";
 import config from "../config.js";
 import { faker } from "@faker-js/faker";
-const mongoURL = config.MONGO_URL || "mongodb://localhost:27017";
+const mongoURL = config.MONGO_URL || "mongodb+srv://dylantse:IHcuwrJ9F648zvYH@cluster0.vrljs4f.mongodb.net/?retryWrites=true&w=majority";
 const DB_NAME = "logMyPetDB";
 const PET_COLLECTION_NAME = "pets";
 const USER_COLLECTION_NAME = "users";
