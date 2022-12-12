@@ -139,8 +139,8 @@ const authenticate = async (req, res) => {
       .toArray();
 
     if (user.password == result[0].password) {
-      // req.session.user = { user: user.username };
-      res.json(result);
+      req.session.user = { user: user.username };
+      res.json({ isLoggedIn: true, err: null });
     }
   } catch (e) {
     console.log(e);
