@@ -1,36 +1,68 @@
 .pet-info-display {
-  overflow-y: scroll;
-  padding-top: 136px;
+  padding: 56px 48px;
 }
 
-.pet-info-display-field {
-  width: 360px;
+.pet-info-display-back-anchor,
+.pet-info-display-back-anchor:hover {
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: rgb(50, 62, 247);
+  cursor: pointer;
+}
+
+.left-icon {
+  margin-right: 4px;
+}
+
+.pet-info-display-edit {
+  margin-top: 36px;
+}
+
+.pet-info-display-date {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.pet-info-display-content {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 24px 32px 56px 32px;
+  border-radius: 16px;
 }
 
 .pet-info-display-title {
-  font-size: 32px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 38px;
-  margin-bottom: 26px;
-  text-align: center;
 }
 
-.pet-info-display-button-section {
-  margin: 40px 0 100px 0;
+.pet-info-display-description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 38px;
 }
 
-.pet-info-display-button-section-sub,
-.pet-info-display-button-section-sub > * {
-  width: 100%;
+.pet-info-display-icon {
+  margin-left: 2vw;
+  width: 2vw;
+}
+
+textarea {
+  border: none;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.pet-info-display-button {
+  border-radius: 16px;
+}
+
+
+.pet-info-display-button + .pet-info-display-button {
+  margin-left: 8px;
+}
+
+.pet-info-display-button-white {
   color: white;
-}
-
-.pet-info-display-back-button {
-  padding: 7px;
-  border: 1px solid #d9d9d9;
-  margin-bottom: 16px;
-}
-
-.pet-info-display-edit-button {
-  margin-left: 16px;
 }

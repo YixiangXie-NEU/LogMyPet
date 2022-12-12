@@ -28,10 +28,12 @@ const PetSectionProfileItem = ({ pet }) => {
             onClick={handleButtonClick}
           >
             <UilEllipsis size="30" color={"#323EF7"} />
+            <span className="visually-hidden">More</span>
           </button>
         </div>
         <span className="pet-section-item-description">
-          {gender === "Male" ? "He" : "She"} arrived home on {moment(new Date(birthday)).format("MMM Do YYYY")}
+          {gender === "Male" ? "He" : "She"} arrived home on{" "}
+          {moment(new Date(birthday)).format("MMM Do YYYY")}
         </span>
         <PetProfile
           name={name}
