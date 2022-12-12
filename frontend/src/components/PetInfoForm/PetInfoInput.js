@@ -3,12 +3,20 @@ import React from "react";
 
 import "../../assets/styles/PetInfoInput.css";
 
-const PetInfoInput = ({ placeholder, value, onChange, required }) => (
+const PetInfoInput = ({
+  type = "text",
+  placeholder,
+  ariaLabel,
+  value,
+  onChange,
+  required = true,
+}) => (
   <input
-    type="text"
+    type={type}
+    tabIndex="0"
     className="form-control pet-info-input"
     placeholder={placeholder}
-    aria-label={placeholder}
+    aria-label={ariaLabel || placeholder}
     value={value}
     onChange={onChange}
     required={required}
@@ -16,10 +24,12 @@ const PetInfoInput = ({ placeholder, value, onChange, required }) => (
 );
 
 PetInfoInput.propTypes = {
+  type: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  required: PropTypes.bool.isRequired,
+  required: PropTypes.bool,
 };
 
 export default PetInfoInput;

@@ -6,9 +6,9 @@ import "../../assets/styles/Colors.css";
 import "../../assets/styles/PetSectionPetItem.css";
 
 const PetSectionPetItemLoading = () =>
-  [0, 1, 2].map((item) => (
+  [0, 1, 2, 3].map((item) => (
     <button
-      className="col-12 col-xxl-11 d-inline-flex align-items-center large-button background-purple-light"
+      className="col-12 col-xl-11 d-inline-flex align-items-center large-button background-purple-light"
       key={item}
     >
       <Skeleton height="37px" width="150px" />

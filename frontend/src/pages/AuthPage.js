@@ -4,7 +4,7 @@ import AuthRight from "../components/Auth/AuthRight";
 
 const AuthPage = () => {
   return (
-    <div className="vh-100">
+    <div role="main" className="vh-100">
       <div className="d-flex h-100">
         <AuthForm
           content={{

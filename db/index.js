@@ -309,7 +309,7 @@ function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const seedDB = async () => {
+const seedDB = async (res) => {
   let client;
 
   try {
@@ -317,31 +317,50 @@ const seedDB = async () => {
     const collection = client.db(DB_NAME).collection(RECORD_COLLECTION_NAME);
 
     // make a bunch of time series data
-    let records = [];
-    let categoryIds = [
+    const records = [];
+    const categoryIds = [
       "638409972cee931320d80a80",
       "63840a0d2cee931320d80a81",
       "63840a712cee931320d80a82",
       "63840ad02cee931320d80a83",
     ];
-    let names = ["Eating", "Drinking", "Poop", "Pee"];
-    let imgUrls = [
+    const names = ["Eating", "Drinking", "Poop", "Pee"];
+    const imgUrls = [
       "https://assets.moveshanghai.com/lmp_09.png",
       "https://assets.moveshanghai.com/lmp_06.png",
       "https://assets.moveshanghai.com/lmp_08.png",
       "https://assets.moveshanghai.com/lmp_07.png",
     ];
+    const pets = [
+      {
+        id: "637d169d5d92a22e072de62b",
+        name: "Caral",
+        gender: "Male",
+        weight: "4 kg",
+        neuteredOrSpayed: true,
+      },
+      {
+        id: "637d114a09071db97148a2b6",
+        name: "Bambi",
+        gender: "Male",
+        weight: "10 kg",
+        neuteredOrSpayed: false,
+      },
+    ];
 
     for (let i = 0; i < 1200; i++) {
       const rdInt = randomIntFromInterval(0, 3);
+      const randomPetInt = randomIntFromInterval(0, 1);
       console.log(categoryIds[rdInt]);
-      let record = {
+      console.log(pets[randomPetInt].id);
+      const record = {
         timestamp_day: faker.date.past(),
         category: {
           id: categoryIds[rdInt],
           name: names[rdInt],
           imgUrl: imgUrls[rdInt],
         },
+        pet: pets[randomPetInt],
         about: faker.lorem.paragraph(),
       };
 
@@ -351,6 +370,7 @@ const seedDB = async () => {
 
     console.log("Database seeded! :)");
     client.close();
+    res.json({ status: 200 });
   } catch (err) {
     console.log(err.stack);
   }

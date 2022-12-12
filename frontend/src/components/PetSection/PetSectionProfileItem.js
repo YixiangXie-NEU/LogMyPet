@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import UilEllipsis from "@iconscout/react-unicons/icons/uil-ellipsis-h";
+import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
 import PetProfile from "./PetProfile";
@@ -21,7 +22,7 @@ const PetSectionProfileItem = ({ pet }) => {
     <div className="d-flex justify-content-center background-purple-light pet-section-item-content">
       <div className="d-flex flex-column w-100">
         <div className="d-flex pet-section-item-title">
-          {name} profile
+          Newly added pets
           <button
             className="clear-styles pet-section-item-button"
             onClick={handleButtonClick}
@@ -30,7 +31,7 @@ const PetSectionProfileItem = ({ pet }) => {
           </button>
         </div>
         <span className="pet-section-item-description">
-          {gender === "Male" ? "He" : "She"} arrived home on {birthday}
+          {gender === "Male" ? "He" : "She"} arrived home on {moment(new Date(birthday)).format("MMM Do YYYY")}
         </span>
         <PetProfile
           name={name}

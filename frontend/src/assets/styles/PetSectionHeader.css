@@ -16,6 +16,7 @@
 
 .pet-section-add-pet-button {
   border-radius: 16px;
+  white-space: nowrap;
 }
 
 .plus-icon {

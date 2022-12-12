@@ -11,17 +11,26 @@ const LogSectionItemLoading = () =>
       className="d-flex justify-content-start align-items-center background-purple-light login-section-item"
       key={item}
     >
-      <div className="col-3">
-        <Skeleton height="32px" width="200px"/>
+      <div className="col-2 d-none d-md-block">
+        <Skeleton height="32px" width="80px" />
       </div>
-      <div className="col-2">
-        <Skeleton height="32px" width="100px"/>
+      <div className="col-2 d-md-none d-block">
+        <Skeleton height="32px" width="60px" />
       </div>
-      <div className="col-5">
-        <Skeleton height="32px" width="350px"/>
+      <div className="col-2 d-none d-md-block">
+        <Skeleton height="32px" width="100px" />
       </div>
-      <div className="col-2">
-        <Skeleton height="32px" width="80px"/>
+      <div className="col-2 d-md-none d-block">
+        <Skeleton height="32px" width="60px" />
+      </div>
+      <div className="col-3 col-md-2">
+        <Skeleton height="32px" width="100px" />
+      </div>
+      <div className="col-4 col-md-2 d-none d-md-block">
+        <Skeleton height="32px" width="300px" />
+      </div>
+      <div className="col-4 col-md-2 d-md-none d-block">
+        <Skeleton height="32px" width="160px" />
       </div>
     </div>
   ));

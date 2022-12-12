@@ -52,9 +52,7 @@ const LogSection = () => {
       <div className="d-flex justify-content-end">
         <button
           className="d-inline-flex align-items-center small-button log-section-add-record-button orange-solid"
-          onClick={() => {
-            handleClick();
-          }}
+          onClick={handleClick}
         >
           <UilPlus className="plus-icon" size="20" />
           Add record

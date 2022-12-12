@@ -19,8 +19,18 @@ const RadioGroup = ({ title, options, value, setValue }) => (
           onChange={() => {
             setValue(option);
           }}
+          tabIndex="-1"
         ></input>
-        <label className="radio-item-input" htmlFor={option.toLowerCase()}>
+        <label
+          tabIndex="0"
+          onKeyUp={(event) => {
+            if (event.key === "Enter") {
+              setValue(option);
+            }
+          }}
+          className="radio-item-input"
+          htmlFor={option.toLowerCase()}
+        >
           <div className="radio-item-indicator"></div>
           {option}
         </label>

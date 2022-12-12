@@ -24,10 +24,6 @@
   line-height: 38px;
 }
 
-.log-detail-edit-button {
-  border-radius: 16px;
-}
-
 .log-detail-content {
   margin-top: 12px;
   margin-bottom: 12px;
@@ -56,4 +52,17 @@ textarea {
   border: none;
   box-sizing: border-box;
   resize: none;
+}
+
+.log-detail-button {
+  border-radius: 16px;
+}
+
+
+.log-detail-button + .log-detail-button {
+  margin-left: 8px;
+}
+
+.log-detail-button-black {
+  color: black;
 }

@@ -15,7 +15,10 @@ const PetSection = () => {
       },
     });
     if (res.ok) {
-      const data = await res.json();
+      const result = await res.json();
+      const data = result.sort(
+        (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+      );
       setPets(data);
     } else {
       console.log("Failed to load pets.");
@@ -29,7 +32,7 @@ const PetSection = () => {
   return (
     <div className="d-flex flex-column">
       <PetSectionHeader pets={pets} />
-      <div className="d-flex flex-xxl-row flex-column justify-content-between">
+      <div className="d-flex flex-xl-row flex-column justify-content-between">
         <PetSectionProfile pets={pets} />
         <PetSectionPets pets={pets} />
       </div>

@@ -1,43 +1,50 @@
-[{
-  "_id": {
-    "$oid": "637d10d35c9984654169e296"
+[
+  {
+    "_id": {
+      "$oid": "637d10d35c9984654169e296"
+    },
+    "userId": "00000000001",
+    "name": "Lilca",
+    "species": "Cat",
+    "breed": "American shorthair",
+    "color": "Black and white",
+    "gender": "Male",
+    "birthday": "2022-02-11",
+    "personality": "Shy",
+    "neuteredOrSpayed": true,
+    "weight": "5kg",
+    "timestamp": "2022-12-08T09:44:50.397Z"
   },
-  "userId": "638443453dd5d09ed40eec7e",
-  "name": "Lilca",
-  "species": "Cat",
-  "breed": "American shorthair",
-  "color": "Black and white",
-  "gender": "Male",
-  "birthday": "November 1st, 2020",
-  "personality": "Shy",
-  "neuteredOrSpayed": true,
-  "weight": "5kg"
-},{
-  "_id": {
-    "$oid": "637d114a09071db97148a2b6"
+  {
+    "_id": {
+      "$oid": "637d114a09071db97148a2b6"
+    },
+    "userId": "638443453dd5d09ed40eec7e",
+    "name": "Bambi",
+    "species": "Cat",
+    "breed": "American shorthair",
+    "color": "Black and white",
+    "gender": "Male",
+    "birthday": "2022-02-11",
+    "personality": "Shy",
+    "neuteredOrSpayed": false,
+    "weight": "10 kg",
+    "timestamp": "2022-12-09T09:44:50.397Z"
   },
-  "userId": "638443453dd5d09ed40eec7e",
-  "name": "Bambi",
-  "species": "Cat",
-  "breed": "American shorthair",
-  "color": "Black and white",
-  "gender": "Male",
-  "birthday": "November 1st, 2020",
-  "personality": "Shy",
-  "neuteredOrSpayed": true,
-  "weight": "5kg"
-},{
-  "_id": {
-    "$oid": "637d169d5d92a22e072de62b"
-  },
-  "userId": "638443453dd5d09ed40eec7e",
-  "name": "Caral",
-  "species": "Cat",
-  "breed": "Amrshort",
-  "color": "BW",
-  "gender": "Male",
-  "birthday": "Nov. 1st, 2021",
-  "personality": "shy",
-  "neuteredOrSpayed": true,
-  "weight": "5kg"
-}]
+  {
+    "_id": {
+      "$oid": "637d169d5d92a22e072de62b"
+    },
+    "userId": "638443453dd5d09ed40eec7e",
+    "name": "Caral",
+    "species": "Cat",
+    "breed": "Amrshort",
+    "color": "BW",
+    "gender": "Male",
+    "birthday": "2022-02-11",
+    "personality": "shy",
+    "neuteredOrSpayed": true,
+    "weight": "4 kg",
+    "timestamp": "2022-12-10T09:44:50.397Z"
+  }
+]

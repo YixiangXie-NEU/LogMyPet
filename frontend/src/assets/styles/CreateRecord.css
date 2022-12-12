@@ -1,0 +1,16 @@
+.create-record {
+  overflow-y: scroll;
+  padding-top: 136px;
+}
+
+.create-record-field {
+  width: 360px;
+}
+
+.create-record-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+  margin-bottom: 26px;
+  text-align: center;
+}

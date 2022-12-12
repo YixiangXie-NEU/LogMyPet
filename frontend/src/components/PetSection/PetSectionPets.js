@@ -8,7 +8,7 @@ import PetSectionPetItemLoading from "./PetSectionPetItemLoading";
 
 const PetSectionPets = ({ pets }) => {
   return (
-    <div className="col-12 col-xxl-6 d-flex flex-column align-items-end pet-section-pets">
+    <div className="col-12 col-xl-6 d-flex flex-column align-items-end pet-section-pets">
       {pets.length === 0 ? (
         <PetSectionPetItemLoading />
       ) : (
