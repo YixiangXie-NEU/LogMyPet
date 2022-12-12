@@ -14,7 +14,7 @@
     "initdb:records": "mongoimport -d logMyPetDB -c records --jsonArray --file ./data/records.json",
     "init:db": "initdb:pets && initdb:users && initdb:categories && initdb:records",
     "install:all": "yarn && cd frontend && yarn",
-    "build": "cd frontend && yarn build",
+    "build": "cd frontend && yarn clean && yarn build",
     "start": "yarn build && nodemon app.js",
     "dev:server": "nodemon app.js",
     "dev:client": "cd frontend && yarn dev"
