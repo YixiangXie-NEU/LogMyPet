@@ -169,18 +169,28 @@ const userAuthStatus = async (req, res) => {
 };
 
 const authenticate = async (req, res) => {
-  passport.authenticate("local", (err, user) => {
-    console.log("Test:", user);
-    if (err) throw err;
-    if (!user) {
-      res.sendStatus(403);
-    } else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.sendStatus(200);
-      });
+  const user = req.body;
+  let client;
+  try {
+    client = new MongoClient(mongoURL);
+
+    const result = await client
+      .db(DB_NAME)
+      .collection(USER_COLLECTION_NAME)
+      .find({ username: user.username })
+      .toArray();
+    console.log(0, user);
+    if (user.password == result[0].password) {
+      req.session.user = { user: user.username };
+      res.json({ isLoggedIn: true, err: null });
     }
-  })(req, res);
+  } catch (e) {
+    req.session.user = null;
+    res.json({
+      isLoggedIn: false,
+      err: "Incorrect username password combination",
+    });
+  }
 };
 
 const userLogOut = async (req, res) => {
