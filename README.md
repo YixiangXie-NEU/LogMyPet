@@ -17,7 +17,7 @@ This is the repo of [LogMyPet](https://github.com/YixiangXie-NEU/LogMyPet).
 **Screenshot**:
 
 <img width="1470" alt="image" src="https://user-images.githubusercontent.com/113476679/204379434-bc5affd4-8c43-4778-a40b-5a5c2e6c0ee1.png">
-<img width="828" alt="image" src="https://user-images.githubusercontent.com/113476679/204379550-d0514773-1415-4b3f-ba89-636084b56a12.png">
+<img width="1470" alt="image" src="https://user-images.githubusercontent.com/113476679/207227605-41c739fb-cf95-47fe-82a6-cd7f352dc79d.png">
 
 **Instructions to build/run**:
 
