@@ -1,10 +1,9 @@
 import { MongoClient, ObjectId } from "mongodb";
-// import config from "../config.js";
 import { faker } from "@faker-js/faker";
 import passport from "passport";
 import LocalStrategy from "passport-local";
 
-const mongoURL = "mongodb+srv://dylantse:IHcuwrJ9F648zvYH@cluster0.vrljs4f.mongodb.net/?retryWrites=true&w=majority";
+const mongoURL = process.env.MONGO_URL || "mongodb://localhost:27017";
 const DB_NAME = "logMyPetDB";
 const PET_COLLECTION_NAME = "pets";
 const USER_COLLECTION_NAME = "users";
@@ -38,18 +37,10 @@ const strategy = new LocalStrategy(async function verify(
     .toArray();
 
   const user = result[0];
-  // const user = {
-  //   username: "admin123",
-  //   password: "1234567",
-  // };
+
   console.log("REACH HERE?", user);
   if (!user) return done(null, false);
 
-  // if (password == user.password) {
-  //   return done(null, user);
-  // } else {
-  //   return done(null, false);
-  // }
   user.id = result[0]._id.toString();
 
   if (password == result[0].password) {
@@ -172,12 +163,10 @@ const deletePet = async (req, res) => {
 };
 
 const userAuthStatus = async (req, res, next) => {
-  // res.sendStatus(200);
   if (req.isAuthenticated()) {
     res.sendStatus(200);
   } else {
     next();
-    // res.sendStatus(403);
   }
 };
 
@@ -194,36 +183,6 @@ const authenticate = async (req, res, next) => {
       });
     }
   })(req, res, next);
-  // const user = req.body;
-  // let client;
-  // try {
-  //   client = new MongoClient(mongoURL);
-
-  //   const result = await client
-  //     .db(DB_NAME)
-  //     .collection(USER_COLLECTION_NAME)
-  //     .find({ username: user.username })
-  //     .toArray();
-
-  //   if (user.password == result[0].password) {
-  //     req.session.user = { user: user };
-  //     console.log(req.session.user);
-  //     res.sendStatus(200);
-  //     // req.session.user = { user: user.username };
-  //     // res.json({ isLoggedIn: true, err: null });
-  //   }
-  // } catch (e) {
-  //   console.log(e);
-  //   res.status(500).json({ error: e.message });
-  //   // req.session.user = null;
-  //   // res.json({
-  //   //   isLoggedIn: false,
-  //   //   err: "Incorrect username password combination",
-  //   // });
-  // } finally {
-  //   console.log("createPet: Closing db connection");
-  //   client.close();
-  // }
 };
 
 const userLogOut = async (req, res) => {
@@ -258,7 +217,6 @@ const createUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  // res.json(req.session.user);
   console.log(req.isAuthenticated());
   if (req.isAuthenticated()) {
     res.json(req.user);
