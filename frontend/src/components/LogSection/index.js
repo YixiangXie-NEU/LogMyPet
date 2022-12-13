@@ -14,34 +14,56 @@ import "../../assets/styles/LogSection.css";
 
 const LogSection = () => {
   const [records, setRecords] = useState([]);
+  const [user, setUser] = useState({});
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getRecords() {
-      const res = await fetch("/api/records", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (res.ok) {
-        const result = await res.json();
-        const data = result.sort(
-          (a, b) => new Date(b.timestamp_day) - new Date(a.timestamp_day)
-        );
-        for (let i = 0; i < data.length; i++) {
-          data[i].timestamp_day = moment(data[i].timestamp_day).format(
-            "MMM Do YYYY"
-          );
-        }
-        setRecords(data);
-      } else {
-        console.log(res.err);
-      }
+  const check = async () => {
+    const res = await fetch("/api/currUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const result = await res.json();
+      setUser(result);
+    } else {
+      navigate("/login");
     }
+  };
 
-    getRecords();
+  const getRecords = async () => {
+    const res = await fetch("/api/records", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const result = await res.json();
+      const data = result.sort(
+        (a, b) => new Date(b.timestamp_day) - new Date(a.timestamp_day)
+      );
+      for (let i = 0; i < data.length; i++) {
+        data[i].timestamp_day = moment(data[i].timestamp_day).format(
+          "MMM Do YYYY"
+        );
+      }
+      setRecords(data);
+    } else {
+      console.log(res.err);
+    }
+  };
+
+  useEffect(() => {
+    check();
   }, []);
+
+  useEffect(() => {
+    if (user.id) getRecords();
+  }, [user]);
 
   const handleClick = () => {
     navigate("/createRecord");

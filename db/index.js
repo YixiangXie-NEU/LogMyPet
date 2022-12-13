@@ -5,7 +5,6 @@ import passport from "passport";
 import LocalStrategy from "passport-local";
 
 const mongoURL = config.MONGO_URL || "mongodb://localhost:27017";
-
 const DB_NAME = "logMyPetDB";
 const PET_COLLECTION_NAME = "pets";
 const USER_COLLECTION_NAME = "users";
@@ -59,7 +58,7 @@ const getPets = async (req, res) => {
     const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
     const page = req.body.page || 0;
     const result = await petsCol
-      .find({})
+      .find({ userId: req.body.id })
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
       .toArray();
@@ -178,9 +177,15 @@ const authenticate = async (req, res) => {
     } else {
       req.logIn(user, (err) => {
         if (err) throw err;
+        res.sendStatus(200);
       });
     }
   })(req, res);
+};
+
+const userLogOut = async (req, res) => {
+  req.logout();
+  res.sendStatus(200);
 };
 
 const createUser = async (req, res) => {
@@ -209,6 +214,14 @@ const createUser = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.sendStatus(403);
+  }
+};
+
 const createRecord = async (req, res) => {
   let client;
 
@@ -228,21 +241,14 @@ const createRecord = async (req, res) => {
 
 const getRecords = async (req, res) => {
   let client;
-  // let page = req.query.page || 0;
-  console.log(req.query);
 
   try {
     client = new MongoClient(mongoURL);
     const result = await client
       .db(DB_NAME)
       .collection(RECORD_COLLECTION_NAME)
-      .find({})
-      // .skip(PAGE_SIZE * page)
-      // .limit(PAGE_SIZE)
+      .find({ userId: req.body.id })
       .toArray();
-    // console.log(
-    //   `Page ${page} of records are retrieved. Example record[0]: ${result[0]}`
-    // );
     console.log(`Records are retrieved. Example record[0]: ${result[0]}`);
     res.json(result);
   } catch (err) {
@@ -385,6 +391,7 @@ const seedDB = async (res) => {
       console.log(categoryIds[rdInt]);
       console.log(pets[randomPetInt].id);
       const record = {
+        userId: "638443453dd5d09ed40eec7e",
         timestamp_day: faker.date.past(),
         category: {
           id: categoryIds[rdInt],
@@ -414,7 +421,9 @@ export default {
   editPet,
   deletePet,
   userAuthStatus,
+  userLogOut,
   createUser,
+  getUser,
   createRecord,
   getOneRecord,
   getRecords,

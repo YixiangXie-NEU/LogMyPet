@@ -7,23 +7,28 @@ import PetSectionPets from "./PetSectionPets";
 
 const PetSection = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState({});
   const [pets, setPets] = useState([]);
 
   const check = async () => {
-    const res = await fetch("/api/authStatus", {
+    const res = await fetch("/api/currUser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    if (!res.ok) {
+    if (res.ok) {
+      const result = await res.json();
+      setUser(result);
+    } else {
       navigate("/login");
     }
   };
 
   const loadData = async () => {
     const res = await fetch("/api/pets", {
-      method: "GET",
+      method: "POST",
+      body: JSON.stringify(user),
       headers: {
         "Content-Type": "application/json",
       },
@@ -41,8 +46,11 @@ const PetSection = () => {
 
   useEffect(() => {
     check();
-    loadData();
   }, []);
+
+  useEffect(() => {
+    if (user.id) loadData();;
+  }, [user]);
 
   return (
     <div className="d-flex flex-column">
