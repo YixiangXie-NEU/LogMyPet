@@ -160,13 +160,14 @@ const deletePet = async (req, res) => {
   }
 };
 
-const userAuthStatus = async (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.sendStatus(200);
-  } else {
-    next();
-    res.sendStatus(403);
-  }
+const userAuthStatus = async (req, res) => {
+  res.sendStatus(200);
+  // if (req.isAuthenticated()) {
+  //   res.sendStatus(200);
+  // } else {
+  //   next();
+  //   res.sendStatus(403);
+  // }
 };
 
 const authenticate = async (req, res) => {
@@ -215,12 +216,13 @@ const createUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  console.log(req.isAuthenticated());
-  if (req.isAuthenticated()) {
-    res.json(req.user);
-  } else {
-    res.sendStatus(403);
-  }
+  res.json(req.session.user);
+  // console.log(req.isAuthenticated());
+  // if (req.isAuthenticated()) {
+  //   res.json(req.user);
+  // } else {
+  //   res.sendStatus(403);
+  // }
 };
 
 const createRecord = async (req, res) => {
