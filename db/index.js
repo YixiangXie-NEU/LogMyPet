@@ -1,6 +1,9 @@
 import { MongoClient, ObjectId } from "mongodb";
 import config from "../config.js";
 import { faker } from "@faker-js/faker";
+import passport from "passport";
+import LocalStrategy from "passport-local";
+
 const mongoURL = config.MONGO_URL || "mongodb://localhost:27017";
 const DB_NAME = "logMyPetDB";
 const PET_COLLECTION_NAME = "pets";
@@ -8,6 +11,44 @@ const USER_COLLECTION_NAME = "users";
 const RECORD_COLLECTION_NAME = "records";
 const CATEGORY_COLLECTION_NAME = "categories";
 const PAGE_SIZE = 20;
+
+const strategy = new LocalStrategy(async function verify(
+  username,
+  password,
+  cb
+) {
+  let client = new MongoClient(mongoURL);
+
+  const result = await client
+    .db(DB_NAME)
+    .collection(USER_COLLECTION_NAME)
+    .find({ username: username })
+    .toArray();
+
+  const user = result[0];
+  if (!user) return cb(null, false);
+  user.id = result[0]._id.toString();
+
+  if (password == result[0].password) {
+    return cb(null, user);
+  } else {
+    return cb(null, false);
+  }
+});
+
+passport.use(strategy);
+
+passport.serializeUser(function (user, cb) {
+  process.nextTick(function () {
+    cb(null, { id: user.id, username: user.username });
+  });
+});
+
+passport.deserializeUser(function (user, cb) {
+  process.nextTick(function () {
+    return cb(null, user);
+  });
+});
 
 const getPets = async (req, res) => {
   let client;
@@ -17,7 +58,7 @@ const getPets = async (req, res) => {
     const petsCol = client.db(DB_NAME).collection(PET_COLLECTION_NAME);
     const page = req.body.page || 0;
     const result = await petsCol
-      .find({})
+      .find({ userId: req.body.id })
       .skip(PAGE_SIZE * page)
       .limit(PAGE_SIZE)
       .toArray();
@@ -120,36 +161,31 @@ const deletePet = async (req, res) => {
 };
 
 const userAuthStatus = async (req, res) => {
-  res.json({
-    isLoggedIn: !!req.session.user,
-    user: req.session.user,
-  });
+  if (req.isAuthenticated()) {
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(403);
+  }
 };
 
 const authenticate = async (req, res) => {
-  const user = req.body;
-  let client;
-  try {
-    client = new MongoClient(mongoURL);
-
-    const result = await client
-      .db(DB_NAME)
-      .collection(USER_COLLECTION_NAME)
-      .find({ username: user.username })
-      .toArray();
-
-    if (user.password == result[0].password) {
-      // req.session.user = { user: user.username };
-      res.json(result);
+  passport.authenticate("local", (err, user) => {
+    console.log("Test:", user);
+    if (err) throw err;
+    if (!user) {
+      res.sendStatus(403);
+    } else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.sendStatus(200);
+      });
     }
-  } catch (e) {
-    console.log(e);
-    // req.session.user = null;
-    // res.json({
-    //   isLoggedIn: false,
-    //   err: "Incorrect username password combination",
-    // });
-  }
+  })(req, res);
+};
+
+const userLogOut = async (req, res) => {
+  req.logout();
+  res.sendStatus(200);
 };
 
 const createUser = async (req, res) => {
@@ -178,6 +214,14 @@ const createUser = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.sendStatus(403);
+  }
+};
+
 const createRecord = async (req, res) => {
   let client;
 
@@ -197,21 +241,14 @@ const createRecord = async (req, res) => {
 
 const getRecords = async (req, res) => {
   let client;
-  // let page = req.query.page || 0;
-  console.log(req.query);
 
   try {
     client = new MongoClient(mongoURL);
     const result = await client
       .db(DB_NAME)
       .collection(RECORD_COLLECTION_NAME)
-      .find({})
-      // .skip(PAGE_SIZE * page)
-      // .limit(PAGE_SIZE)
+      .find({ userId: req.body.id })
       .toArray();
-    // console.log(
-    //   `Page ${page} of records are retrieved. Example record[0]: ${result[0]}`
-    // );
     console.log(`Records are retrieved. Example record[0]: ${result[0]}`);
     res.json(result);
   } catch (err) {
@@ -354,6 +391,7 @@ const seedDB = async (res) => {
       console.log(categoryIds[rdInt]);
       console.log(pets[randomPetInt].id);
       const record = {
+        userId: "638443453dd5d09ed40eec7e",
         timestamp_day: faker.date.past(),
         category: {
           id: categoryIds[rdInt],
@@ -383,7 +421,9 @@ export default {
   editPet,
   deletePet,
   userAuthStatus,
+  userLogOut,
   createUser,
+  getUser,
   createRecord,
   getOneRecord,
   getRecords,

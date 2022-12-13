@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PetInfoForm from "../components/PetInfoForm";
@@ -10,6 +10,28 @@ const CreatePet = () => {
   const navigate = useNavigate();
 
   const [alert, setAlert] = useState("");
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    async function check() {
+      const res = await fetch("/api/currUser", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        const result = await res.json();
+        setUser(result);
+      } else {
+        navigate("/login");
+      }
+    }
+
+    check();
+  }, []);
+
   const handleCancel = () => {
     navigate("/");
   };
@@ -18,7 +40,7 @@ const CreatePet = () => {
     const res = await fetch("/api/pet", {
       method: "POST",
       body: JSON.stringify({
-        userId: "00000000001",
+        userId: user.id,
         name: pet.name,
         species: pet.species,
         breed: pet.breed,

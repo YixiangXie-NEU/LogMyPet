@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import PetSectionHeader from "./PetSectionHeader";
 import PetSectionProfile from "./PetSectionProfile";
 import PetSectionPets from "./PetSectionPets";
 
 const PetSection = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
   const [pets, setPets] = useState([]);
+
+  const check = async () => {
+    const res = await fetch("/api/currUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const result = await res.json();
+      setUser(result);
+    } else {
+      navigate("/login");
+    }
+  };
 
   const loadData = async () => {
     const res = await fetch("/api/pets", {
-      method: "GET",
+      method: "POST",
+      body: JSON.stringify(user),
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,8 +45,12 @@ const PetSection = () => {
   };
 
   useEffect(() => {
-    loadData();
+    check();
   }, []);
+
+  useEffect(() => {
+    if (user.id) loadData();;
+  }, [user]);
 
   return (
     <div className="d-flex flex-column">
