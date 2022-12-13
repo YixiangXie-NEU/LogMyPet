@@ -49,7 +49,7 @@ const PetSection = () => {
   }, []);
 
   useEffect(() => {
-    if (user.id) loadData();;
+    if (user.id) loadData();
   }, [user]);
 
   return (
