@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import PetSectionHeader from "./PetSectionHeader";
 import PetSectionProfile from "./PetSectionProfile";
 import PetSectionPets from "./PetSectionPets";
 
 const PetSection = () => {
+  const navigate = useNavigate();
   const [pets, setPets] = useState([]);
+
+  const check = async () => {
+    const res = await fetch("/api/authStatus", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      navigate("/login");
+    }
+  };
 
   const loadData = async () => {
     const res = await fetch("/api/pets", {
@@ -26,6 +40,7 @@ const PetSection = () => {
   };
 
   useEffect(() => {
+    check();
     loadData();
   }, []);
 

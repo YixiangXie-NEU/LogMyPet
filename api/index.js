@@ -16,6 +16,7 @@ router.put("/api/record/:id", db.editRecord);
 router.delete("/api/record/:id", db.deleteRecord);
 router.post("/api/signup", db.createUser);
 router.post("/api/login", db.authenticate);
+router.get("/api/authStatus", db.userAuthStatus);
 
 router.get("/api/seed", db.seedDB);
 

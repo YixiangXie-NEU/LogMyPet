@@ -4,7 +4,9 @@ import { faker } from "@faker-js/faker";
 import passport from "passport";
 import LocalStrategy from "passport-local";
 
-const mongoURL = config.MONGO_URL || "mongodb+srv://dylantse:IHcuwrJ9F648zvYH@cluster0.vrljs4f.mongodb.net/?retryWrites=true&w=majority";
+const mongoURL =
+  config.MONGO_URL ||
+  "mongodb+srv://dylantse:IHcuwrJ9F648zvYH@cluster0.vrljs4f.mongodb.net/?retryWrites=true&w=majority";
 const DB_NAME = "logMyPetDB";
 const PET_COLLECTION_NAME = "pets";
 const USER_COLLECTION_NAME = "users";
@@ -161,10 +163,11 @@ const deletePet = async (req, res) => {
 };
 
 const userAuthStatus = async (req, res) => {
-  res.json({
-    isLoggedIn: !!req.session.user,
-    user: req.session.user,
-  });
+  if (req.isAuthenticated()) {
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(403);
+  }
 };
 
 const authenticate = async (req, res) => {
@@ -176,8 +179,6 @@ const authenticate = async (req, res) => {
     } else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        console.log("Test:", user);
-        res.sendStatus(200);
       });
     }
   })(req, res);

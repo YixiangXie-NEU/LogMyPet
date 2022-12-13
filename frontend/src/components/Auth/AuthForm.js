@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../../assets/styles/Auth.css";
 
 const AuthForm = ({ content }) => {
@@ -9,29 +9,29 @@ const AuthForm = ({ content }) => {
   const passwordInputRef = useRef();
 
   const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
 
   const [isAuthCorrect, setIsAuthCorrect] = useState(true);
   const [errAlert, setErrAlert] = useState("");
 
-  // useEffect(() => {
-  //   async function check() {
-  //     fetch("/api/getCurrUser", {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     }).then((res) => {
-  //       if (res.ok) {
-  //         navigate("/");
-  //       } else {
-  //         if (location.pathname != "/signup") navigate("/login");
-  //       }
-  //     });
-  //   }
+  useEffect(() => {
+    async function check() {
+      const res = await fetch("/api/authStatus", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-  //   check();
-  // }, []);
+      if (res.ok) {
+        navigate("/");
+      } else {
+        if (location.pathname != "/signup") navigate("/login");
+      }
+    }
+
+    check();
+  }, []);
 
   const submitHandler = async (event) => {
     event.preventDefault();
