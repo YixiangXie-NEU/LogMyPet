@@ -1,10 +1,10 @@
 import { MongoClient, ObjectId } from "mongodb";
-import config from "../config.js";
+// import config from "../config.js";
 import { faker } from "@faker-js/faker";
 import passport from "passport";
 import LocalStrategy from "passport-local";
 
-const mongoURL = config.MONGO_URL || "mongodb://localhost:27017";
+const mongoURL = "mongodb+srv://dylantse:IHcuwrJ9F648zvYH@cluster0.vrljs4f.mongodb.net/?retryWrites=true&w=majority";
 const DB_NAME = "logMyPetDB";
 const PET_COLLECTION_NAME = "pets";
 const USER_COLLECTION_NAME = "users";
@@ -29,20 +29,20 @@ const strategy = new LocalStrategy(async function verify(
   password,
   done
 ) {
-  // let client = new MongoClient(mongoURL);
+  let client = new MongoClient(mongoURL);
 
-  // const result = await client
-  //   .db(DB_NAME)
-  //   .collection(USER_COLLECTION_NAME)
-  //   .find({ username: username })
-  //   .toArray();
+  const result = await client
+    .db(DB_NAME)
+    .collection(USER_COLLECTION_NAME)
+    .find({ username: username })
+    .toArray();
 
-  // const user = result[0];
-  const user = {
-    username: "admin123",
-    password: "1234567",
-  };
-  console.log("REACH HERE?", user);
+  const user = result[0];
+  // const user = {
+  //   username: "admin123",
+  //   password: "1234567",
+  // };
+  // console.log("REACH HERE?", user);
   if (!user) return done(null, false);
 
   if (password == user.password) {
