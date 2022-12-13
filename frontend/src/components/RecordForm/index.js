@@ -11,6 +11,7 @@ import "../../assets/styles/RecordForm.css";
 const RecordForm = () => {
   const navigate = useNavigate();
 
+  const [user, setUser] = useState({});
   const [categories, setCategories] = useState([]);
   const [allPets, setAllPets] = useState([]);
   const [pets, setPets] = useState([]);
@@ -21,6 +22,21 @@ const RecordForm = () => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
+    async function check() {
+      const res = await fetch("/api/currUser", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const result = await res.json();
+        setUser(result);
+      } else {
+        navigate("/login");
+      }
+    }
+
     async function getCategories() {
       const res = await fetch("/api/categories", {
         method: "GET",
@@ -52,6 +68,7 @@ const RecordForm = () => {
       setSelectedPet(data[0].name);
     }
 
+    check();
     getCategories();
     getPets();
   }, []);
@@ -59,6 +76,7 @@ const RecordForm = () => {
   const handleSubmit = async () => {
     const pet = allPets.filter((item) => item.name == selectedPet)[0];
     const record = {
+      userId: user.id,
       category: {
         id: selectedCategory,
         name: categories.filter((item) => item._id == selectedCategory)[0].name,
@@ -75,7 +93,6 @@ const RecordForm = () => {
       timestamp_day: new Date(),
       about: description,
     };
-    console.log(record);
     const res = await fetch("/api/createRecord", {
       method: "POST",
       body: JSON.stringify(record),
