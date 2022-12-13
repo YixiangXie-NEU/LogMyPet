@@ -215,6 +215,7 @@ const createUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
+  console.log(req.isAuthenticated());
   if (req.isAuthenticated()) {
     res.json(req.user);
   } else {
