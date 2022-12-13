@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import "../assets/styles/Colors.css";
 import "../assets/styles/Buttons.css";
 import "../assets/styles/RightPanelProfile.css";
 import userProfile from "../assets/images/user-profile.png";
 
-const RightPanelProfile = () => {
+const RightPanelProfile = ({ user }) => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
@@ -29,7 +30,7 @@ const RightPanelProfile = () => {
         className="right-pane-profile-pic"
         alt="A example picture for user profile."
       ></img>
-      <div className="right-pane-user-name">Jasmine</div>
+      <div className="right-pane-user-name">{user.username}</div>
       <button
         onClick={handleClick}
         className="small-button right-pane-edit-profile-button purple-solid"
@@ -40,6 +41,8 @@ const RightPanelProfile = () => {
   );
 };
 
-RightPanelProfile.propTypes = {};
+RightPanelProfile.propTypes = {
+  user: PropTypes.object
+};
 
 export default RightPanelProfile;

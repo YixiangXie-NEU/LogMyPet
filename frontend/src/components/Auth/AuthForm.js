@@ -13,6 +13,7 @@ const AuthForm = ({ content }) => {
 
   const [isAuthCorrect, setIsAuthCorrect] = useState(true);
   const [errAlert, setErrAlert] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     async function check() {
@@ -63,7 +64,8 @@ const AuthForm = ({ content }) => {
     });
     const res = await result;
     if (res.ok) {
-      navigate("/create");
+      const user = await getCurrUser();
+      setUser(user);
     } else {
       setErrAlert("Incorrect account");
     }
@@ -72,6 +74,41 @@ const AuthForm = ({ content }) => {
   const navigateToSignup = () => {
     navigate("/signup");
   };
+
+  const getCurrUser = async () => {
+    const res = await fetch("/api/currUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const result = await res.json();
+      return result;
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const getPets = async () => {
+    const res = await fetch("/api/pets", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.ok) {
+      const result = await res.json();
+      if (result.length > 0) navigate("/");
+    } else {
+      navigate("/create");
+    }
+  };
+
+  useEffect(() => {
+    if (user.id) getPets();
+  }, [user]);
 
   return (
     <>
