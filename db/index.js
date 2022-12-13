@@ -12,11 +12,24 @@ const RECORD_COLLECTION_NAME = "records";
 const CATEGORY_COLLECTION_NAME = "categories";
 const PAGE_SIZE = 20;
 
+passport.serializeUser(function (user, done) {
+  process.nextTick(function () {
+    done(null, { id: user.id, username: user.username });
+  });
+});
+
+passport.deserializeUser(function (user, done) {
+  process.nextTick(function () {
+    return done(null, user);
+  });
+});
+
 const strategy = new LocalStrategy(async function verify(
   username,
   password,
-  cb
+  done
 ) {
+  console.log("REACH HERE?");
   let client = new MongoClient(mongoURL);
 
   const result = await client
@@ -26,29 +39,17 @@ const strategy = new LocalStrategy(async function verify(
     .toArray();
 
   const user = result[0];
-  if (!user) return cb(null, false);
+  if (!user) return done(null, false);
   user.id = result[0]._id.toString();
 
   if (password == result[0].password) {
-    return cb(null, user);
+    return done(null, user);
   } else {
-    return cb(null, false);
+    return done(null, false);
   }
 });
 
 passport.use(strategy);
-
-passport.serializeUser(function (user, cb) {
-  process.nextTick(function () {
-    cb(null, { id: user.id, username: user.username });
-  });
-});
-
-passport.deserializeUser(function (user, cb) {
-  process.nextTick(function () {
-    return cb(null, user);
-  });
-});
 
 const getPets = async (req, res) => {
   let client;
