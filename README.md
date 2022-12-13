@@ -33,7 +33,7 @@ This is the repo of [LogMyPet](https://github.com/YixiangXie-NEU/LogMyPet).
 **Typography**: We use [Poppins](https://fonts.google.com/specimen/Poppins) from Google Fonts as our font through out the whole application. Different weights are used to satisfy our needs.
 
 **Color palette**:
-
+<img width="988" alt="image" src="https://user-images.githubusercontent.com/113476679/207227395-ccbea4d5-db72-4117-ab57-1d69a28f5e07.png">
 
 **Design document**: [link](https://docs.google.com/document/d/16rWFdmIpdwGWzglFKyjteMEkSaJHJNAs5pNcU7eDYj0/edit?usp=sharing)
 
