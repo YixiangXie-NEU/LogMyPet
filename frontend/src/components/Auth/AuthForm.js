@@ -24,7 +24,7 @@ const AuthForm = ({ content }) => {
       });
 
       if (res.ok) {
-        navigate("/");
+        // navigate("/");
       } else {
         if (location.pathname != "/signup") navigate("/login");
       }
