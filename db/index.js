@@ -42,21 +42,21 @@ const strategy = new LocalStrategy(async function verify(
   //   username: "admin123",
   //   password: "1234567",
   // };
-  // console.log("REACH HERE?", user);
+  console.log("REACH HERE?", user);
   if (!user) return done(null, false);
 
-  if (password == user.password) {
-    return done(null, user);
-  } else {
-    return done(null, false);
-  }
-  // user.id = result[0]._id.toString();
-
-  // if (password == result[0].password) {
+  // if (password == user.password) {
   //   return done(null, user);
   // } else {
   //   return done(null, false);
   // }
+  user.id = result[0]._id.toString();
+
+  if (password == result[0].password) {
+    return done(null, user);
+  } else {
+    return done(null, false);
+  }
 });
 
 passport.use(strategy);
