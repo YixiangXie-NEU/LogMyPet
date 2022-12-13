@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import moment from "moment";
 import UilPlus from "@iconscout/react-unicons/icons/uil-plus";
@@ -12,26 +13,26 @@ import LogSectionTitle from "./LogSectionTitle";
 import "../../assets/styles/Buttons.css";
 import "../../assets/styles/LogSection.css";
 
-const LogSection = () => {
+const LogSection = ({ user }) => {
   const [records, setRecords] = useState([]);
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
 
   const navigate = useNavigate();
 
-  const check = async () => {
-    const res = await fetch("/api/currUser", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.ok) {
-      const result = await res.json();
-      setUser(result);
-    } else {
-      navigate("/login");
-    }
-  };
+  // const check = async () => {
+  //   const res = await fetch("/api/currUser", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   if (res.ok) {
+  //     const result = await res.json();
+  //     setUser(result);
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // };
 
   const getRecords = async () => {
     const res = await fetch("/api/records", {
@@ -57,9 +58,9 @@ const LogSection = () => {
     }
   };
 
-  useEffect(() => {
-    check();
-  }, []);
+  // useEffect(() => {
+  //   check();
+  // }, []);
 
   useEffect(() => {
     if (user.id) getRecords();
@@ -94,6 +95,8 @@ const LogSection = () => {
   );
 };
 
-LogSection.propTypes = {};
+LogSection.propTypes = {
+  user: PropTypes.object
+};
 
 export default LogSection;

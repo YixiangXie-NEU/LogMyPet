@@ -1,19 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import PetSection from "./PetSection";
 import LogSection from "./LogSection";
 
 import "../assets/styles/LeftPanel.css";
 
-const LeftPanel = () => {
+const LeftPanel = ({ user }) => {
   return (
     <div className="col-lg-9 col-12 d-flex flex-column left-panel">
-      <PetSection />
-      <LogSection />
+      <PetSection user={user}/>
+      <LogSection user={user}/>
     </div>
   );
 };
 
-LeftPanel.propTypes = {};
+LeftPanel.propTypes = {
+  user: PropTypes.object
+};
 
 export default LeftPanel;

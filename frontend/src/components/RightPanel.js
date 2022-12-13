@@ -1,15 +1,15 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import RightPanelProfile from "./RightPanelProfile";
 
 import "../assets/styles/Colors.css";
 import "../assets/styles/RightPanel.css";
 import rightPanelIllustration from "../assets/images/right-panel-illustration.png";
 
-const RightPanel = () => {
+const RightPanel = ({ user }) => {
   return (
     <div className="col-3 p-0 d-lg-flex d-none flex-column justify-content-between background-purple-light right-panel">
-      <RightPanelProfile />
+      <RightPanelProfile user={user}/>
       <div className="d-flex right-panel-image-section">
         <img
           id="right-panel-illustration"
@@ -21,6 +21,8 @@ const RightPanel = () => {
   );
 };
 
-RightPanel.propTypes = {};
+RightPanel.propTypes = {
+  user: PropTypes.object
+};
 
 export default RightPanel;
