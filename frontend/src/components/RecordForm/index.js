@@ -52,9 +52,15 @@ const RecordForm = () => {
       }
     }
 
+    check();
+    getCategories();
+  }, []);
+
+  useEffect(() => {
     async function getPets() {
       const res = await fetch("/api/pets", {
-        method: "GET",
+        method: "POST",
+        body: JSON.stringify(user),
         headers: {
           "Content-Type": "application/json",
         },
@@ -68,10 +74,8 @@ const RecordForm = () => {
       setSelectedPet(data[0].name);
     }
 
-    check();
-    getCategories();
-    getPets();
-  }, []);
+    if (user.id) getPets();
+  }, [user]);
 
   const handleSubmit = async () => {
     const pet = allPets.filter((item) => item.name == selectedPet)[0];
@@ -125,7 +129,9 @@ const RecordForm = () => {
       ) : (
         <div className="cr-group">
           {categories.map((category) => (
-            <div
+            <button
+              type="button"
+              tabIndex="0"
               className={
                 selectedCategory == category._id
                   ? "pb-2 cr-col cr-col-orange"
@@ -133,13 +139,22 @@ const RecordForm = () => {
               }
               key={category._id}
               id={category._id}
+              onKeyUp={(event) => {
+                if (event.key === "Enter") {
+                  setSelectedCategory(event.currentTarget.id);
+                }
+              }}
               onClick={(event) => {
                 setSelectedCategory(event.currentTarget.id);
               }}
             >
-              <img className="cr-pic" src={category.imgUrl}></img>
+              <img
+                className="cr-pic"
+                src={category.imgUrl}
+                alt={`tab ${category.name}`}
+              ></img>
               <div>{category.name}</div>
-            </div>
+            </button>
           ))}
         </div>
       )}

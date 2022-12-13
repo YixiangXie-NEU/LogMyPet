@@ -23,9 +23,7 @@ const AuthForm = ({ content }) => {
         },
       });
 
-      if (res.ok) {
-        navigate("/");
-      } else {
+      if (!res.ok) {
         if (location.pathname != "/signup") navigate("/login");
       }
     }
@@ -88,7 +86,7 @@ const AuthForm = ({ content }) => {
             </div>
           )}
 
-          <h3>{content.title}</h3>
+          <h1>{content.title}</h1>
           <div className="auth-text">
             {content.description}
             <span onClick={navigateToSignup} style={{ color: "#323EF7" }}>
