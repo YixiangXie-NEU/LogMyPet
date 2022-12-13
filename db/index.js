@@ -160,10 +160,11 @@ const deletePet = async (req, res) => {
   }
 };
 
-const userAuthStatus = async (req, res) => {
+const userAuthStatus = async (req, res, next) => {
   if (req.isAuthenticated()) {
     res.sendStatus(200);
   } else {
+    next();
     res.sendStatus(403);
   }
 };
