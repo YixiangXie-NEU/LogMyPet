@@ -1,5 +1,7 @@
 # LogMyPet
 
+[First iteration](https://github.com/YixiangXie-NEU/LogMyPet/releases/tag/final-1.0.0)
+
 [80% Milestone](https://github.com/YixiangXie-NEU/LogMyPet/releases/tag/milestone-80pct)
 
 [60% Milestone](https://github.com/YixiangXie-NEU/LogMyPet/releases/tag/milestone-60pct)
@@ -10,12 +12,12 @@ This is the repo of [LogMyPet](https://github.com/YixiangXie-NEU/LogMyPet).
 
 **Class Link**: [link](https://johnguerra.co/classes/webDevelopment_fall_2022/)
 
-**Project Objective**: For project 3, we are required to create a full stack application with Node + Express + Mongo as the backend and React with hooks as the frontend. We decided to build a platform that allows the users to create profiles for their pets and to log several behaviors for their pets, such as drinking water, eating food or defecating.
+**Project Objective**: For project 3, we are required to create a full stack application with Node + Express + Mongo as the backend and React with hooks as the frontend. We decided to build a platform that allows the users to create profiles for their pets and to log several behaviors for their pets, such as drinking water, eating food or defecating. For project 4, we are required to iterate over project 3 incorporating concepts of design, accessibility and usability.
 
 **Screenshot**:
 
 <img width="1470" alt="image" src="https://user-images.githubusercontent.com/113476679/204379434-bc5affd4-8c43-4778-a40b-5a5c2e6c0ee1.png">
-<img width="828" alt="image" src="https://user-images.githubusercontent.com/113476679/204379550-d0514773-1415-4b3f-ba89-636084b56a12.png">
+<img width="1470" alt="image" src="https://user-images.githubusercontent.com/113476679/207227605-41c739fb-cf95-47fe-82a6-cd7f352dc79d.png">
 
 **Instructions to build/run**:
 
@@ -28,13 +30,22 @@ This is the repo of [LogMyPet](https://github.com/YixiangXie-NEU/LogMyPet).
 1. Build and run the project locally (run `yarn start` in your terminal)
 1. Access the page in `http://localhost:3000`
 
+**Typography**: We use [Poppins](https://fonts.google.com/specimen/Poppins) from Google Fonts as our font through out the whole application. Different weights are used to satisfy our needs.
+
+**Color palette**:
+<img width="988" alt="image" src="https://user-images.githubusercontent.com/113476679/207227395-ccbea4d5-db72-4117-ab57-1d69a28f5e07.png">
+
 **Design document**: [link](https://docs.google.com/document/d/16rWFdmIpdwGWzglFKyjteMEkSaJHJNAs5pNcU7eDYj0/edit?usp=sharing)
 
 **Design mockup**: [link](https://www.figma.com/file/kyL3RojSAam6b4RxOKTzTF/PetHabit?node-id=0%3A1)
 
-**Introduction slides**: [link](https://docs.google.com/presentation/d/19ZK8kJeYIDDTnDwqYiGKI07whW3-gMjaf_3VJhFXx94/edit?usp=sharing)
+**First iteration introduction slides**: [link](https://docs.google.com/presentation/d/19ZK8kJeYIDDTnDwqYiGKI07whW3-gMjaf_3VJhFXx94/edit?usp=sharing)
 
-**Demo video**: [link](https://youtu.be/y4Sch-2FSwQ)
+**Second iteration introduction slides**: [link]()
+
+**First iteration demo video**: [link](https://youtu.be/y4Sch-2FSwQ)
+
+**Second iteration demo video**: [link]()
 
 **Technical requirements**: React with hooks, Bootstrap, Node, Express, Mongo
 
