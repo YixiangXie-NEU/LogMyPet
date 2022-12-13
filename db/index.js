@@ -171,14 +171,12 @@ const userAuthStatus = async (req, res, next) => {
 
 const authenticate = async (req, res) => {
   passport.authenticate("local", (err, user) => {
-    console.log("Test:", user);
     if (err) throw err;
     if (!user) {
       res.sendStatus(403);
     } else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        console.log("Test:", user);
         res.sendStatus(200);
       });
     }
