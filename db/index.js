@@ -29,7 +29,6 @@ const strategy = new LocalStrategy(async function verify(
   password,
   done
 ) {
-  console.log("REACH HERE?");
   let client = new MongoClient(mongoURL);
 
   const result = await client
@@ -39,6 +38,7 @@ const strategy = new LocalStrategy(async function verify(
     .toArray();
 
   const user = result[0];
+  console.log("REACH HERE?", user);
   if (!user) return done(null, false);
   user.id = result[0]._id.toString();
 
