@@ -144,6 +144,9 @@ const RecordForm = () => {
                   setSelectedCategory(event.currentTarget.id);
                 }
               }}
+              onClick={(event) => {
+                setSelectedCategory(event.currentTarget.id);
+              }}
             >
               <img
                 className="cr-pic"
