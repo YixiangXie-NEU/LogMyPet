@@ -29,24 +29,34 @@ const strategy = new LocalStrategy(async function verify(
   password,
   done
 ) {
-  let client = new MongoClient(mongoURL);
+  // let client = new MongoClient(mongoURL);
 
-  const result = await client
-    .db(DB_NAME)
-    .collection(USER_COLLECTION_NAME)
-    .find({ username: username })
-    .toArray();
+  // const result = await client
+  //   .db(DB_NAME)
+  //   .collection(USER_COLLECTION_NAME)
+  //   .find({ username: username })
+  //   .toArray();
 
-  const user = result[0];
+  // const user = result[0];
+  const user = {
+    username: "admin123",
+    password: "1234567",
+  };
   console.log("REACH HERE?", user);
   if (!user) return done(null, false);
-  user.id = result[0]._id.toString();
 
-  if (password == result[0].password) {
+  if (password == user.password) {
     return done(null, user);
   } else {
     return done(null, false);
   }
+  // user.id = result[0]._id.toString();
+
+  // if (password == result[0].password) {
+  //   return done(null, user);
+  // } else {
+  //   return done(null, false);
+  // }
 });
 
 passport.use(strategy);
@@ -161,14 +171,14 @@ const deletePet = async (req, res) => {
   }
 };
 
-const userAuthStatus = async (req, res) => {
-  res.sendStatus(200);
-  // if (req.isAuthenticated()) {
-  //   res.sendStatus(200);
-  // } else {
-  //   next();
-  //   res.sendStatus(403);
-  // }
+const userAuthStatus = async (req, res, next) => {
+  // res.sendStatus(200);
+  if (req.isAuthenticated()) {
+    res.sendStatus(200);
+  } else {
+    next();
+    // res.sendStatus(403);
+  }
 };
 
 const authenticate = async (req, res, next) => {
@@ -248,13 +258,13 @@ const createUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  res.json(req.session.user);
-  // console.log(req.isAuthenticated());
-  // if (req.isAuthenticated()) {
-  //   res.json(req.user);
-  // } else {
-  //   res.sendStatus(403);
-  // }
+  // res.json(req.session.user);
+  console.log(req.isAuthenticated());
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.sendStatus(403);
+  }
 };
 
 const createRecord = async (req, res) => {
