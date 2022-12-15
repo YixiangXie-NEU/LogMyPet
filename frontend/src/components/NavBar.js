@@ -9,6 +9,7 @@ const NavBar = () => {
       role="nav"
       className="d-flex d-lg-none justify-content-end align-items-center background-purple-light nav-bar"
     >
+      // see comment
       <div className="nav-bar-text">Jasmine</div>
       <div>
         <button className="small-button purple-solid nav-bar-button">Log out</button>
