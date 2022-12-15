@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import LeftPanel from "../components/LeftPanel";
 import RightPanel from "../components/RightPanel";
 
+// see commment
 const Homepage = () => {
   const navigate = useNavigate();
 
