@@ -2,6 +2,7 @@ import React from "react";
 import AuthForm from "../components/Auth/AuthForm";
 import AuthRight from "../components/Auth/AuthRight";
 
+// see comment
 const AuthPage = () => {
   return (
     <div role="main" className="vh-100">
