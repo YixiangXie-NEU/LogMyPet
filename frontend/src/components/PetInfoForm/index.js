@@ -9,6 +9,8 @@ import "../../assets/styles/Colors.css";
 import "../../assets/styles/PetInfoInput.css";
 import "../../assets/styles/PetInfoForm.css";
 
+//I'd suggest enforcing a unit for the pet's weight, just for some consistency
+
 const PetInfoForm = ({
   initPet,
   handleSubmit,
