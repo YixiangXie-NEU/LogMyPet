@@ -25,3 +25,5 @@ router.get("/api/categories", db.getCategories);
 router.get("/api/seed", db.seedDB);
 
 export default router;
+
+//Super well organized!
