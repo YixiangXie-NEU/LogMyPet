@@ -60,3 +60,6 @@ This is the repo of [LogMyPet](https://github.com/YixiangXie-NEU/LogMyPet).
 **Font source**: [Google Fonts](https://fonts.google.com)
 
 **Icon source**: [IconScout](https://iconscout.com)
+
+
+Adding some general comments
