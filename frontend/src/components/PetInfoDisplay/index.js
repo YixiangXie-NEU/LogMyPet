@@ -8,7 +8,7 @@ import PetProfile from "../PetSection/PetProfile";
 import PetInfoDisplayItem from "./PetInfoDisplayItem";
 
 import "../../assets/styles/PetInfoDisplay.css";
-
+//handleDelete function - would be great to ask user for confirmation
 const PetInfoDisplay = ({ pet, handleDelete, handleEdit }) => (
   <div role="main" className="container-fluid vh-100 p-0">
     <div className="pet-info-display">
