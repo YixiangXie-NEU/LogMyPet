@@ -9,7 +9,8 @@ const PetSection = ({ user }) => {
   // const navigate = useNavigate();
   // const [user, setUser] = useState({});
   const [pets, setPets] = useState([]);
-
+  
+//Will this code be used?
   // const check = async () => {
   //   const res = await fetch("/api/currUser", {
   //     method: "GET",
